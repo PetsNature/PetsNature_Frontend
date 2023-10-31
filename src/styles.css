@@ -1,1 +1,60 @@
 /* You can add global styles to this file, and also import other style files */
+
+#contacto {
+    background-color: #474747;
+    padding-left: 40px;
+    padding-bottom: 50px;
+   
+  }
+#xd{
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+#contacto h2 {
+    font-size: 35px;
+    color: #f58c50;
+    margin-top: 50px;
+    margin-bottom: 40px;
+    font-weight: 800;
+}
+
+#contacto li {
+    margin-bottom: 27px;
+    margin-left: 10px;
+}
+
+#contacto ul {
+    color: #fafafad5;
+    font-size: 18px;
+}
+
+.icon-container {
+    display: flex;
+    font-size: 30px;
+    padding-top: 120px;
+    justify-content: center;
+  }
+  
+.icon-container i {
+    margin-right: 120px; /* Espacio entre los iconos */
+    color: #fafafad5;
+    font-size: 40px;
+  }
+
+.icon-container i:hover {
+    color: #f79963;
+  }
+
+
+/* Estilos para el pie de página */
+footer {
+    background-color: #000000;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    }
+    footer p {
+    margin: 0;
+    font-size: 16px;
+    }
