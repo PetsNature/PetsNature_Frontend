@@ -1,43 +1,13 @@
 
 <div class="container-flex">
-    <!-- Header Navbar-->
-      <nav class="navbar navbar-expand-lg" style="background-color: #f88f49e1;">
-              <a class="navbar-brand" href="#">
-                  <img src="./assets/logo.png" alt="Logo de la empresa" style="height: 80px; "> Pets Nature
-              </a>
-
-              <div class="align-self-center collapse navbar-collapse d-lg-flex justify-content-lg-between" id="templatemo_main_nav">
-                  <ul class="nav navbar-nav d-flex justify-content-between mx-lg-auto ml-auto text-right">
-                      <li class="nav-item">
-                          <a class="nav-link" href="#QuienesSomos">QUIENES SOMOS</a>
-                      </li>
-                      <li class="nav-item">
-                          <a class="nav-link" href="#Servicios">SERVICIOS</a>
-                      </li>
-                      <li class="nav-item">
-                          <a class="nav-link" href="#Equipo">EQUIPO</a>
-                      </li>
-                      <li class="nav-item">
-                          <a class="nav-link" href="#Testimonios">TESTIMONIOS</a>
-                      </li>
-
-                  </ul>
-              </div>
-              
-              <a id="iniciar" class="btn btn-light boton">
-                INICIAR
-              </a>
-
-
-      </nav> 
-      <header></header>
+    <app-navbar></app-navbar>
 
       <div class="container-flex" id="banner">
         <div class="row">
             <div class="col-md-7">
                 <h2><strong>SÉ PARTE DE NUESTRA COMUNIDAD DE AMANTES DE MASCOTAS</strong></h2>
                 <p></p>
-                <a href="#" class="btn btn-light boton">
+                <a href="#" class="btn btn-light boton" routerLink="ingreso">
                     ÚNETE YA <i class="bi bi-arrow-right-circle-fill"></i>
                 </a>
             </div>
@@ -56,7 +26,7 @@
 
       </div>
 
-      <div class="container" id="Servicios">
+      <div class="container-flex" id="Servicios">
         <h3>SERVICIOS</h3>
         <div class="row">
             <div class="col-md-4 text-center">
@@ -90,8 +60,7 @@
         </div>
       </div>
     
-    
-
+    <app-footer></app-footer>
 </div>
 
 
