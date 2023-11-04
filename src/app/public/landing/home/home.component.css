@@ -23,12 +23,13 @@
 }
 
 #banner .boton{
-    font-weight: 600;
+    font-weight: 700;
     background-color: #fa9653;
     color: #ffffff;
     margin-right: 30px;
     border-radius: 20px;
     left: auto;
+    font-size: 25px;
     
 }
 

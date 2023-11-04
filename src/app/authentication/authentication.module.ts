@@ -9,17 +9,20 @@ import { FormsModule } from '@angular/forms';
 
 
 
+
 @NgModule({
   declarations: [
     LoginComponent,
     SignupComponent,
-    IngresoComponent
+    IngresoComponent,
+ 
   ],
   imports: [
     CommonModule,
     LandingModule,
     AuthenticationRoutingModule,
-    FormsModule
+    FormsModule,
+
 
   ]
 })
