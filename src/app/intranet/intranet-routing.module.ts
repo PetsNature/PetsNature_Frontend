@@ -1,12 +1,23 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { InicioComponent } from './inicio/inicio.component';
-
+import { InicioComponent } from './inicio.component';
+import { VentanaComponent } from './ventana/ventana.component';
+import { PublicacionesComponent } from './publicaciones/publicaciones.component';
+import { CrearPublicacionComponent } from './crear-publicacion/crear-publicacion.component';
+import { DescubreComponent } from './descubre/descubre.component';
 
 
 const routes: Routes = [
   
-    { path: 'inicio', component: InicioComponent}
+    { path: '', component: InicioComponent, children: [
+      {path: '', component: VentanaComponent },
+      {path: 'descubre', component: DescubreComponent, children:[
+        {path: '', component: PublicacionesComponent},
+        {path: 'crear', component: CrearPublicacionComponent},
+      ] },
+    ]
+  },
+
   
 ];
 

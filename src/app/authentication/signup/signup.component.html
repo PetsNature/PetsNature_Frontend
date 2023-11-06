@@ -1,1 +1,37 @@
-<p>signup works!</p>
+<div>
+    <div class="signup-container">
+        <h1>CREAR CUENTA</h1>
+        <div id="Contenedor-Datos">
+            <div class="form-group">
+                <label for="NombreCompleto">Nombre y Apellido</label>
+                <input type="text" id="NombreCompleto" placeholder="Nombre completo" [(ngModel)]="user.name">
+                <span class="error-message" *ngIf="!user.name">Por favor, ingresa tu nombre y apellido.</span>
+            </div>
+            <div class="form-group">
+                <label for="email">Correo electrónico</label>
+                <input type="email" id="email" placeholder="example@correo.com" [(ngModel)]="user.email">
+                <span class="error-message" *ngIf="!user.email">Por favor, ingresa tu correo electrónico.</span>
+                <span class="error-message" *ngIf="user.email && !validarCorreo(user.email)">El correo electrónico no es válido.</span>
+            </div>
+            <div class="form-group">
+                <label for="password">Contraseña</label>
+                <input type="password" id="password" placeholder="Contraseña" [(ngModel)]="user.password">
+                <span class="error-message" *ngIf="!user.password || user.password.length < 8">La contraseña debe tener al menos 8 caracteres.</span>
+                <span class="error-message" *ngIf="user.password && !validarContrasena(user.password)">La contraseña debe contener al menos un número y un símbolo.</span>
+            </div>
+            <div class="form-group">
+                <label for="confpassword">Confirmar Contraseña</label>
+                <input type="password" id="confpassword" placeholder="Contraseña" [(ngModel)]="passwordv">
+                <span class="error-message" *ngIf="user.password !== passwordv">Las contraseñas deben ser las mismas.</span>
+            </div>
+            <div id="TyC">
+                <input type="checkbox" name="tyc">
+                <label for="tyc">Al seleccionar la casilla, aceptas los <a href="#">Terminos y Condiciones</a></label>
+            </div>
+        </div>
+        <div id="btn-signup">
+            <button class="register-btn" (click)="signup()">REGISTRARSE</button>
+        </div>
+    </div>
+</div>
+

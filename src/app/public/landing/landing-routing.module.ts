@@ -4,7 +4,8 @@ import { HomeComponent } from './home/home.component';
 
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
+
+  { path:'', component:HomeComponent}
   
  
 ];
@@ -13,4 +14,6 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class LandingRoutingModule { }
+export class LandingRoutingModule { 
+
+}

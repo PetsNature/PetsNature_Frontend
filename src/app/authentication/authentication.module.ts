@@ -2,12 +2,12 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
-import { LandingModule } from '../public/landing/landing.module';
 import { IngresoComponent } from './ingreso/ingreso.component';
 import { AuthenticationRoutingModule } from './authentication-routing.module';
 import { FormsModule } from '@angular/forms';
-
-
+import { ReactiveFormsModule } from '@angular/forms'; 
+import { LayoutModule } from '../layout/layout.module';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -19,11 +19,17 @@ import { FormsModule } from '@angular/forms';
   ],
   imports: [
     CommonModule,
-    LandingModule,
     AuthenticationRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
+    LayoutModule,
+    HttpClientModule
 
 
   ]
 })
-export class AuthenticationModule { }
+export class AuthenticationModule { 
+  constructor() {
+    console.log('AuthenticationModule loaded');
+  }
+}

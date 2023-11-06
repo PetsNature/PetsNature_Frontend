@@ -2,24 +2,28 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home/home.component';
 import { LandingRoutingModule } from './landing-routing.module';
-import { NavbarComponent } from './navbar/navbar.component';
-import { FooterComponent } from './footer/footer.component';
+import { LayoutModule } from 'src/app/layout/layout.module';
+import { HttpClientModule } from '@angular/common/http';
+
 
 
 
 @NgModule({
   declarations: [
     HomeComponent,
-    NavbarComponent,
-    FooterComponent
+ 
+
   ],
   imports: [
     CommonModule,
-    LandingRoutingModule
+    LandingRoutingModule,
+    LayoutModule,
+    HttpClientModule
   ],
-  exports: [
-    NavbarComponent,
-    FooterComponent
-  ]
+
 })
-export class LandingModule { }
+export class LandingModule { 
+  constructor() {
+    console.log('landing loaded');
+  }
+}

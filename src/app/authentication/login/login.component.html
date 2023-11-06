@@ -1,0 +1,20 @@
+<div>
+    <div class="login-container">
+        <h1>INICIAR SESIÓN</h1>
+        <div id="Contenedor-Datos">
+          <div class="form-group" id="Dato">
+            <label for="email">Correo electrónico</label>
+            <input type="email" id="email1" class="form-control" placeholder="example@correo.com" [(ngModel)]="authentication.email">
+          </div>
+          <div class="form-group" id="Dato">
+            <label for="password">Contraseña</label>
+            <input type="password" id="password1" class="form-control" placeholder="Contraseña" [(ngModel)]="authentication.password">
+            <span class="error-message">{{m}}</span>
+          </div>
+        </div>
+        <div id="btn-iniciar">
+          <button type="login-btn" (click)="validar()">INICIAR</button>
+        </div>
+    </div>
+  </div>
+  

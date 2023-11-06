@@ -1,0 +1,13 @@
+#Ingreso{
+    display: grid;
+    grid-template-columns: 6fr 0fr 6fr;
+    align-items: center;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+#separador{
+    background-color: #FFBB84;
+    width: 3px;
+    height: 800px;
+}

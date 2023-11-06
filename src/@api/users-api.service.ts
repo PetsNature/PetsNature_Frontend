@@ -2,8 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { lastValueFrom} from 'rxjs';
 
-export interface User {
-  name: string
+export interface User { //poner mismo modelo json que el backend
+  nombre: string
   correo: string
 }
 
