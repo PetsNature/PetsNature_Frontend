@@ -3,9 +3,10 @@ import { CommonModule } from '@angular/common';
 import { NavbarGeneralComponent } from './navbar-general/navbar-general.component';
 import { FooterGeneralComponent } from './footer-general/footer-general.component';
 import { NavbarInicioComponent } from './navbar-inicio/navbar-inicio.component';
-import { LayoutRoutingModule } from './layout-routing.module';
 import { HttpClientModule } from '@angular/common/http';
-
+import { MatMenuModule } from '@angular/material/menu';
+import { MatButtonModule } from '@angular/material/button';
+import { RouterLink } from '@angular/router';
 
 
 
@@ -25,8 +26,10 @@ import { HttpClientModule } from '@angular/common/http';
 
   imports: [
     CommonModule,
-    LayoutRoutingModule,
-    HttpClientModule
+    RouterLink,
+    HttpClientModule,
+    MatMenuModule,
+    MatButtonModule
     
   ]
 })

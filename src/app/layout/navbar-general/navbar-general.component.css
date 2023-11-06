@@ -22,27 +22,10 @@ header {
     color: #ff6600;
 }
 
-
-#iniciar{
-    display: flex;
-    width: 181px;
-    height: 54px;
-    padding: 11px 18px;
-    justify-content: center;
-    align-items: center;
-    gap: 8px;
-    flex-shrink: 0;
-    border-radius: 999px;
-    background: #463222;
-    color: #FFF;
-    margin-right: 30px;
+#templatemo_main_nav{
+   margin-right: 80px;
+  
 }
-
-#iniciar:hover{
-    background-color: #fff;
-    color: #ff6600;
-}
-
 
 /* Navbar Styles */
 .custom-navbar {
@@ -50,7 +33,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 20px;
+    padding: 10px;
     
 }
 
@@ -81,52 +64,17 @@ header {
     padding: 0;
 }
 
-#cerrar{
-    display: flex;
-    width: 181px;
-    height: 54px;
-    padding: 11px 18px;
-    justify-content: center;
-    align-items: center;
-    gap: 8px;
-    flex-shrink: 0;
-    border-radius: 999px;
-    background: #463222;
-    color: #FFF;
-    margin-right: 30px;
-}
-
-#cerrar:hover{
-    background-color: #fff;
-    border-color: #FFF;
-    color: #ff6600;
-}
 
 
 
-/* Responsive design for smaller screens */
-@media (max-width: 1400px) {
-    .custom-navbar {
-        flex-direction: column;
-    }
-
-    .custom-navbar a {
-        margin-bottom: 10px;
-    }
-
-    .custom-btn {
-        margin-top: 10px;
-    }
-
-    @media (max-width: 768px) {
-        .custom-nav {
-            flex-wrap: wrap;
-        }
+@media (max-width: 1100px) {
+    .custom-nav {
+          flex-wrap: wrap;
+     }
     
-        .nav-item {
-            flex-basis: 100%;
-        }
-    }   
+     .nav-item {
+         flex-basis: 100%;
+    }
+}   
 
  
-}

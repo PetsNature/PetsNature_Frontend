@@ -12,32 +12,40 @@
             <li class="nav-item">
                 <a class="nav-link" routerLink="/intranet/descubre">DESCUBRE</a>
             </li>
-
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/intranet">VETERINARIAS CERCANAS</a>
+            </li>
         </ul>
     </div>
 
-   <div>
-    <button id="cerrar" *ngIf="authenticationService.isAuthenticated()" (click)="logout()" >
+    <div id="menu">
+
+        <button mat-button [matMenuTriggerFor]="menu">
+            <img src="https://i.pravatar.cc/100?img=3" alt="" style="height: 50px; border-radius: 50px;">
+        </button>
+    </div>
+   
+
+
+   <mat-menu #menu="matMenu">
+    <div class="text-center"> 
+        <div class="flex items-center">
+            <img src="https://i.pravatar.cc/100?img=3" alt="" style="height: 50px; border-radius: 50px;">
+        </div>
+       <div style="font-weight: 600; padding-top: 10px;">{{ Name }}</div> 
+    
+    </div>
+   
+    <button mat-menu-item style="color: #ff6600;" *ngIf="authenticationService.isAuthenticated()" (click)="logout()" >
         Cerrar sesion
     </button>
+    <button mat-menu-item  *ngIf="!authenticationService.isAuthenticated()">Iniciar sesion</button>
+   </mat-menu>
 
-    <a style="border-radius: 50px;">
-        <img src="https://i.pravatar.cc/100?img=3" alt="" style="height: 50px; border-radius: 50px;">
-    </a>
-   </div> 
-
-            
-        
-          
-          <!-- Agrega más opciones según tu necesidad -->
-       
-     
-    
     
 </nav>
 <header></header>
-<div> {{ Name }}</div>
-<button *ngIf="authenticationService.isAuthenticated()" (click)="logout()">Cerrar sesion</button>
-<button *ngIf="!authenticationService.isAuthenticated()">Iniciar sesion</button>
+
+
 
 

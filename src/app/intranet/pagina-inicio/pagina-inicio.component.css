@@ -7,12 +7,12 @@
     text-align: left; /* Alinea el texto a la izquierda */
     position: absolute ;
     left: 60px; 
-    top: 150px
-   
+    top: 50px;
+    
 }
 
 .fondo {
-    background-image: linear-gradient(90deg,#0d0404ec,#0d040492,#00000010), url('src/assets/banner_arriba.jpg'); /* Ruta de tu imagen de fondo */
+    background-image: linear-gradient(90deg,#000000ec,#11090692,#ffffff10), url('src/assets/banner_arriba.jpg'); /* Ruta de tu imagen de fondo */
     background-size: 100% 100%;
     background-repeat: no-repeat;
     margin: 0;
@@ -23,6 +23,7 @@
     justify-content: center;
     height: 80vh; /* Ajusta la altura de la imagen de fondo según tus necesidades */
     position: relative;
+
 }
 
 h1 {
@@ -81,15 +82,23 @@ h1 {
 }
 
 
-h2 {
-    font-size: 32px;
-    color: #000000;
-    font-family: 'Montserrat', sans-serif;
+/*veterinarios*/
+
+#veterinarias{
+    background: rgba(255, 235, 218, 0.65);
+    margin-top: -40px;
+    padding-top: 80px;
+}
+
+#veterinarias h2{
+    font-size: 40px;
     font-weight: 800;
+    color: rgb(97, 72, 52);
+    font-family: 'Montserrat', sans-serif;
     margin-top: 40px;
     text-align: center;
 }
-/*veterinarios*/
+
 .veterinarios {
     margin-top: 40px;
     margin-left: 60px;
@@ -98,9 +107,12 @@ h2 {
 }
 
 .veterinario-item {
+    margin-top: 100px;
+    margin-left: 200px;
+    margin-right: 200px;
     text-align: center;
     border-radius: 20px;
-    background-color: #FFD9B9;
+    background-color: #ffdabb;
     display: flex;
     grid-template-columns: 1fr 1fr;
     align-items: center;
@@ -109,14 +121,14 @@ h2 {
 }
 
 .imagen {
-    flex: 1;
-    padding: 10px;
+    flex: 1.5;
+    padding: 15px;
+ 
 }
 
 .imagen img {
     max-width: 100%;
-    border-top-left-radius: 20px;
-    border-bottom-left-radius: 20px;
+    
 }
 
 
@@ -148,7 +160,8 @@ p {
     flex-direction: column;
     justify-content: top;
     align-items: center;
-    margin-bottom: 180px;
+    background-size: 100% 100%;
+   
 }
 
 
