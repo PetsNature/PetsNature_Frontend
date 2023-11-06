@@ -1,0 +1,52 @@
+
+/*PUBLICACION*/
+#PubRecomendaciones{
+    background-color: #FFF2E7;
+    border-radius: 15px;
+    padding: 40px 40px;
+}
+
+#PubRecomendaciones #cabecera{
+    display: flex;
+    margin-bottom: 30px;
+}
+
+#PubRecomendaciones #cabecera img{
+    width: 60px;
+    height: 60px;
+    margin-right: 20px;
+}
+
+#PubRecomendaciones #cabecera #Nombre{
+    color: #000;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+#cabecera-text{
+    display: grid;
+    grid-row: 1fr 1fr;
+}
+
+#PubRecomendaciones #time{
+    font-size: 14px;
+    color: #000;
+}
+
+#Hashtag{
+    color: #F99A5B;
+}
+
+#comentario{
+    width: 100%;
+    padding: 8px;
+    border-radius: 2.5px;
+    border: none;
+    margin-bottom: 20px;
+}
+
+#PubRecomendaciones #botones img{
+    height: 30px;
+    width: 30px;
+    margin-right: 15px;
+}

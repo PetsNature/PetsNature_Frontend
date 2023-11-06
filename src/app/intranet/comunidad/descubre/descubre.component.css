@@ -1,25 +1,5 @@
 
-/*BREADCRUMB*/
-ol.Breadcrumb{
-    padding: 10px 16px;
-    list-style: none;
-}
 
-ol.Breadcrumb li{
-    display: inline;
-    font-size: 14px;
-    font-weight: 600;
-}
-
-ol.Breadcrumb li a{
-    color: #FF9A5B;
-}
-
-ol.Breadcrumb li+li::before{
-    padding: 4px;
-    color: black;
-    content: "/\00a0";
-}
 
 /*DESCUBRE*/
 #Descubre{
@@ -35,6 +15,9 @@ ol.Breadcrumb li+li::before{
     text-align: center;
     border-radius: 25px;
     background-color: #FFD9B9;
+    padding: 20px;
+    height: 370px;
+   
 }
 
 #Descubre #Cuenta img.img-perfil{
@@ -62,25 +45,8 @@ ol.Breadcrumb li+li::before{
     margin-right: 10px;
 }
 
-/*PUBLICACION*/
-#FiltroTipoBtn{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    background-color: #FFD9B9;
-    padding: 20px;
-    margin-bottom: 20px;
-    border-radius: 15px;
-} 
 
-#FiltroTipoBtn button{
-    font-size: 14px;
-    color: white;
-    font-weight: 600;
-    margin: 5px;
-    border-radius: 10px;
-    background-color: #F99A5B;
-    border: none;
-    padding: 10px 0px;
-    cursor: pointer;
-}
+
+
+
 

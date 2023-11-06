@@ -1,0 +1,22 @@
+#FiltroTipoBtn{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    background-color: #FFD9B9;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 15px;
+    margin-top: 20px;
+    margin-right: 30px;
+} 
+
+#FiltroTipoBtn button{
+    font-size: 18px;
+    color: white;
+    font-weight: 600;
+    margin: 5px;
+    border-radius: 10px;
+    background-color: #F99A5B;
+    border: none;
+    padding: 10px 0px;
+    cursor: pointer;
+}

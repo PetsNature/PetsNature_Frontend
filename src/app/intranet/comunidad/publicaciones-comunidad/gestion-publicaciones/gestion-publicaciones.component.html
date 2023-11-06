@@ -1,0 +1,15 @@
+<div id="FiltroTipoBtn">
+    <button type="button" (click)="c=1" [style.background-color]="c === 1 ? '#FF9A5B' : 'white'" [style.color]="c === 1 ? 'white' : 'black'">
+        Información
+    </button>
+    <button type="button" (click)="c=2" [style.background-color]="c === 2 ? '#FF9A5B' : 'white'" [style.color]="c === 2 ? 'white' : 'black'">
+        Preguntas
+    </button>
+    <button type="button" (click)="c=3" [style.background-color]="c === 3 ? '#FF9A5B' : 'white'" [style.color]="c === 3 ? 'white' : 'black'">
+        Recomendaciones
+    </button>
+    
+</div>
+<app-info *ngIf="c==1"></app-info>
+<app-preguntas *ngIf="c==2"></app-preguntas>
+<app-recomendaciones *ngIf="c==3"></app-recomendaciones>

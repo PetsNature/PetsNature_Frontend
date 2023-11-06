@@ -18,3 +18,8 @@ ol.Breadcrumb li+li::before{
     color: black;
     content: "/\00a0";
 }
+
+.Breadcrumb{
+    margin-top: 5px;
+    margin-left: 10px;
+}

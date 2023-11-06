@@ -1,0 +1,36 @@
+#PubInfo{
+    background-color: #FFF2E7;
+    border-radius: 15px;
+    padding: 10px 20px;
+    margin-top: 30px;
+}
+
+#PubInfo h1{
+    color: #E37D2B;
+    font-weight: 800;
+}
+
+#PubInfo p{
+    color: #000;
+    font-weight: 600;
+}
+
+#PIdown{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-bottom: 10px;
+}
+
+#PIdown-btn{
+    text-align: right;
+}
+
+#PI-btn{
+    background-color: #F99A5B;
+    color: #ffff;
+    font-weight: 600;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
