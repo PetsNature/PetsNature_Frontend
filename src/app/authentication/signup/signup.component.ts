@@ -37,11 +37,13 @@ export class SignupComponent implements OnInit{
 
     if (!this.user.password || this.user.password.length < 8 || !this.validarContrasena(this.user.password)) {
       this.user.password = ''; 
+      this.passwordv = ''; 
       return; 
     }
 
     if (this.user.password !== this.passwordv) {
-      this.passwordv = ''; 
+      this.passwordv = '';
+      this.user.password = '';  
       return; 
     }
     //metodo para agregar al usuario a la base de datos del sistema

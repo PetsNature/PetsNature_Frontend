@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./crear-publicacion.component.css']
 })
 export class CrearPublicacionComponent {
-
+  
 }

@@ -1,23 +1,19 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { InicioComponent } from './inicio.component';
-import { VentanaComponent } from './ventana/ventana.component';
-import { PublicacionesComponent } from './publicaciones/publicaciones.component';
-import { CrearPublicacionComponent } from './crear-publicacion/crear-publicacion.component';
-import { DescubreComponent } from './descubre/descubre.component';
+import { PaginaInicioComponent } from './pagina-inicio/pagina-inicio.component';
+
 
 
 const routes: Routes = [
   
-    { path: '', component: InicioComponent, children: [
-      {path: '', component: VentanaComponent },
-      {path: 'descubre', component: DescubreComponent, children:[
-        {path: '', component: PublicacionesComponent},
-        {path: 'crear', component: CrearPublicacionComponent},
-      ] },
-    ]
+    { path: 'intranet', component: InicioComponent, children: [
+      {path: '', component: PaginaInicioComponent },
+      { path: 'descubre', loadChildren: () => import('./comunidad/comunidad.module').then((m) => m.ComunidadModule) },
+   
+    ],
   },
-
+  
   
 ];
 

@@ -1,0 +1,158 @@
+
+
+.contenedor {
+    text-align: left;
+    padding: 20px;
+    margin: 0 ; /* Centra el contenido horizontalmente */
+    text-align: left; /* Alinea el texto a la izquierda */
+    position: absolute ;
+    left: 60px; 
+    top: 150px
+   
+}
+
+.fondo {
+    background-image: linear-gradient(90deg,#0d0404ec,#0d040492,#00000010), url('src/assets/banner_arriba.jpg'); /* Ruta de tu imagen de fondo */
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80vh; /* Ajusta la altura de la imagen de fondo según tus necesidades */
+    position: relative;
+}
+
+h1 {
+    font-size: 48px;
+    font-weight: 800;
+    color: #E0D1C4;
+    max-width: 570px; /* Limita el ancho del texto a 400px */
+    font-family: 'Montserrat', sans-serif;
+}
+
+
+.contenedor p {
+    padding-top: 20px;
+    font-size: 16px;
+    text-align: justify;
+    color: #ffff;
+    max-width: 500px; /* Limita el ancho del texto a 400px */
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Estilos para el primer botón */
+.button-1 {
+    background-color: #F99A5B;
+    color: #ffff;
+    font-weight: 600;
+    padding: 10px 20px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.button-1:hover {
+    background-color: #ffffff;
+    color: #F99A5B;
+
+}
+
+/* Estilos para el segundo botón */
+.button-2 {
+    background-color: #F99A5B;
+    color: #ffff;
+    font-weight: 600;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    bottom: 100px; /* Alinear en la parte inferior de la ventana */
+    right: 500px; /* Alinear en la parte derecha de la ventana */
+}
+
+.button-2:hover {
+    background-color: #ffffff;
+    color: #F99A5B;
+
+}
+
+
+h2 {
+    font-size: 32px;
+    color: #000000;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    margin-top: 40px;
+    text-align: center;
+}
+/*veterinarios*/
+.veterinarios {
+    margin-top: 40px;
+    margin-left: 60px;
+    margin-right: 60px;
+    margin-bottom: 80px;
+}
+
+.veterinario-item {
+    text-align: center;
+    border-radius: 20px;
+    background-color: #FFD9B9;
+    display: flex;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 10px;
+    justify-content: space-between;
+}
+
+.imagen {
+    flex: 1;
+    padding: 10px;
+}
+
+.imagen img {
+    max-width: 100%;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+
+
+.texto {
+    flex: 2;
+    padding: 50px;
+    text-align: justify;
+}
+
+
+p {
+    font-size: 20px;
+    color: #000000;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+}
+
+/* Estilos para el botón "Ver más" */
+
+/* Estilos para el banner inferior */
+.banner-inferior {
+    margin-top: 200px;
+    display: flex;
+    background-image: url('src/assets/banner_sec.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 680px;
+    display: flex;
+    flex-direction: column;
+    justify-content: top;
+    align-items: center;
+    margin-bottom: 180px;
+}
+
+
+
+
+
+

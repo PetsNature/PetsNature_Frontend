@@ -1,11 +1,43 @@
-<div> {{ Name }}</div>
-<button *ngIf="!authenticationService.isAuthenticated()">Iniciar sesion</button>
-<button *ngIf="authenticationService.isAuthenticated()" (click)="logout()">Cerrar sesion</button>
-<a href="#" class="btn btn-light boton" routerLink="/intranet">
-    INICIO <i class="bi bi-arrow-right-circle-fill"></i>
-</a>
+<nav class="custom-navbar">
+    
+    <a class="navbar-brand" routerLink="/intranet">
+        <img src="./assets/logo.png" alt="Logo de la empresa" style="height: 80px;"> Pets Nature
+    </a>
+    
+    <div class="custom-navbar-collapse" id="templatemo_main_nav">
+        <ul class="custom-nav">
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/intranet">INICIO</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/intranet/descubre">DESCUBRE</a>
+            </li>
 
-<a href="#" class="btn btn-light boton" routerLink="/intranet/descubre">
-    DESCUBRE <i class="bi bi-arrow-right-circle-fill"></i>
-</a>
+        </ul>
+    </div>
+
+   <div>
+    <button id="cerrar" *ngIf="authenticationService.isAuthenticated()" (click)="logout()" >
+        Cerrar sesion
+    </button>
+
+    <a style="border-radius: 50px;">
+        <img src="https://i.pravatar.cc/100?img=3" alt="" style="height: 50px; border-radius: 50px;">
+    </a>
+   </div> 
+
+            
+        
+          
+          <!-- Agrega más opciones según tu necesidad -->
+       
+     
+    
+    
+</nav>
+<header></header>
+<div> {{ Name }}</div>
+<button *ngIf="authenticationService.isAuthenticated()" (click)="logout()">Cerrar sesion</button>
+<button *ngIf="!authenticationService.isAuthenticated()">Iniciar sesion</button>
+
 

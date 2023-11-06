@@ -45,6 +45,8 @@ export class AuthenticationService {
     console.log('Logout');
     this.authenticatedUser.next(null);
     await this.router.navigate(['/ingreso']);
+    
+    
   }
 
 }

@@ -8,11 +8,13 @@ import { HttpClientModule } from '@angular/common/http';
 
 
 
+
 @NgModule({
   declarations: [
     NavbarGeneralComponent,
     FooterGeneralComponent,
-    NavbarInicioComponent
+    NavbarInicioComponent,
+   
   ],
 
   exports: [
