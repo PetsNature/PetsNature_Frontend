@@ -1,0 +1,86 @@
+
+/*BREADCRUMB*/
+ol.Breadcrumb{
+    padding: 10px 16px;
+    list-style: none;
+}
+
+ol.Breadcrumb li{
+    display: inline;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+ol.Breadcrumb li a{
+    color: #FF9A5B;
+}
+
+ol.Breadcrumb li+li::before{
+    padding: 4px;
+    color: black;
+    content: "/\00a0";
+}
+
+/*DESCUBRE*/
+#Descubre{
+    display:grid;
+    grid-template-columns: 2fr 8fr ;
+    padding: 10px;
+    gap: 20px;
+}
+
+/*CUENTA*/
+#Descubre #Cuenta{
+    margin: 20px;
+    text-align: center;
+    border-radius: 25px;
+    background-color: #FFD9B9;
+}
+
+#Descubre #Cuenta img.img-perfil{
+   margin: 30px;
+    width: 70px;
+    height: 70px;
+}
+
+#Descubre #Cuenta button{
+    font-size: 14px;
+    font-weight: 525;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 40px;
+    background-color: #614834;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+#Descubre #Cuenta button img{
+    color: white;
+    width: 18px;
+    height: 18px;
+    margin-right: 10px;
+}
+
+/*PUBLICACION*/
+#FiltroTipoBtn{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    background-color: #FFD9B9;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 15px;
+} 
+
+#FiltroTipoBtn button{
+    font-size: 14px;
+    color: white;
+    font-weight: 600;
+    margin: 5px;
+    border-radius: 10px;
+    background-color: #F99A5B;
+    border: none;
+    padding: 10px 0px;
+    cursor: pointer;
+}
+

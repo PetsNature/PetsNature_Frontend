@@ -9,11 +9,12 @@ import { PaginaInicioComponent } from './pagina-inicio/pagina-inicio.component';
 
 
 
+
 @NgModule({
   declarations: [
     InicioComponent,
-
     PaginaInicioComponent,
+   
 
   ],
   imports: [

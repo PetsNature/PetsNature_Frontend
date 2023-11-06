@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DescubreComponent } from './descubre/descubre.component';
-import { PublicacionesComponent } from './publicaciones/publicaciones.component';
-import { CrearPublicacionComponent } from './crear-publicacion/crear-publicacion.component';
+import { PublicacionesComponent } from './publicaciones-general/publicaciones/publicaciones.component';
+import { CrearPublicacionComponent } from './mis-publicaciones/crear-publicacion/crear-publicacion.component';
 
 
 

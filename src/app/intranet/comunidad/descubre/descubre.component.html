@@ -1,9 +1,23 @@
-<p>descubre works!</p>
-<a href="#" class="btn btn-light boton" routerLink="/intranet/descubre">
-    publicaciones 
-</a>
-<a href="#" class="btn btn-light boton" routerLink="/intranet/descubre/crear">
-    crear publicaciones 
-</a>
 
-<router-outlet></router-outlet>
+<app-breadcrumb></app-breadcrumb>
+
+<div class="container-flex">
+    <div class="descubre" id="Descubre">
+        <div class="cuenta" id="Cuenta">
+            <img class="img-perfil" src="https://i.ibb.co/GpPLFRS/img-perfil.png"> 
+            <br>
+            <button routerLink="/intranet/descubre/crear">
+                <img src="https://i.ibb.co/z5c0ZCZ/crearpub-icon.png">
+                CREAR PUBLICACIÓN
+            </button>
+            <button>
+                <img src="https://i.ibb.co/rfdC1pH/verpub-icon.png">
+                MIS PUBLICACIONES
+            </button>
+        </div>
+        <div id="Publicaciones">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>
+
