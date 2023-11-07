@@ -1,1 +1,73 @@
-<p>crear-info works!</p>
+<div>
+    <div class="container" id="CrearPubFiltros">
+        <div class="Tema" id="Filtro">
+            <span id="NombreFiltro">
+                Tema
+            </span>
+            <select class="selec-filtro" id="selec-filtro" [(ngModel)]="tema">
+                <option value="">Selecciona</option>
+                <option value="Nutrición">Nutrición</option>
+                <option value="Comportamiento">Comportamiento</option>
+                <option value="Cuidados médicos">Cuidados médicos</option>
+                <option value="Crianza">Crianza</option>
+            </select>
+        </div>
+        <div class="TipodeMascota" id="Filtro">
+            <span id="NombreFiltro">
+                Tipo de Mascota
+            </span>
+            <select class="selec-filtro" [(ngModel)]="tipoMascota" (change)="actualizarRazas()">
+                <option value="No especificado">No especificado</option>
+                <option value="Perros">Perros</option>
+                <option value="Gatos">Gatos</option>
+                <option value="Aves">Aves</option>
+                <option value="Roedores">Roedores</option>
+                <option value="Peces">Peces</option>
+                <option value="Reptiles">Reptiles</option>
+            </select>
+        </div>
+        
+        <div class="Raza" id="Filtro">
+            <span id="NombreFiltro">
+                Raza
+            </span>
+            <select class="selec-filtro" [(ngModel)]="raza">
+                <option value="No especificada">No especificada</option>
+                <option *ngFor="let r of razas" [value]="r">{{ r }}</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="container" id="CrearPubDatos">
+        <div id="Titulo">
+            <span>Título:</span>
+            <input type="text" placeholder="Título" [(ngModel)]="titulo">
+            <div *ngIf="mostrarAdvertenciaTitulo" class="advertencia">¡El título es obligatorio!</div>
+          </div>
+          
+          <div id="Titulo">
+            <span>Descripción:</span>
+            <textarea type="text" placeholder="Descripción" [(ngModel)]="descripcion"></textarea>
+            <div *ngIf="mostrarAdvertenciaDescripcion" class="advertencia">¡La descripción es obligatoria!</div>
+          </div>
+          
+          <div id="PubTexto">
+            <textarea id="content-textual" placeholder="Escribe algo..." [(ngModel)]="contenido"></textarea>
+            <div *ngIf="mostrarAdvertenciaContenido" class="advertencia">¡El contenido es obligatorio!</div>
+          </div>
+          <div id="Titulo">
+            <span>Enlace de Interés:</span>
+            <input type="text" placeholder="https://example.com" [(ngModel)]="e_interes">
+        </div>
+    </div>
+    
+    <div class="down" id="Down">
+        <div class="icons" id="Icons">
+            <a href="#img"><img src="https://i.ibb.co/zfhWtMs/imgpub.png"></a>
+        </div>
+        <div class="btn-publicar" id="PubButton">
+            <button (click)="publicar()">PUBLICAR</button>
+          </div>
+    </div>
+</div>
+
