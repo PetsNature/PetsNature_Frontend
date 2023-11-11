@@ -7,16 +7,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { PaginaInicioComponent } from './pagina-inicio/pagina-inicio.component';
 
 
-
-
-
 @NgModule({
   declarations: [
     InicioComponent,
     PaginaInicioComponent,
-   
 
   ],
+  
   imports: [
     CommonModule,
     IntranetRoutingModule,

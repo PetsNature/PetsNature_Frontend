@@ -17,7 +17,8 @@ import { PublicacionesUsuarioModule } from './publicaciones-usuario/publicacione
     CommonModule,
     ComunidadRoutingModule,
     PublicacionesComunidadModule,
-    PublicacionesUsuarioModule
+    PublicacionesUsuarioModule,
+    
   ],
   exports: [
     
