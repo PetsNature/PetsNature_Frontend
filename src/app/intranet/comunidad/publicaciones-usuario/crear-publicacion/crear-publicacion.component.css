@@ -35,3 +35,108 @@
     padding: 10px 0px;
     cursor: pointer;
 }
+
+#CrearPubFiltros{
+    text-align: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 60px;
+}
+
+#CrearPubFiltros #Filtro{
+    font-size: 14px;
+    font-weight: 600;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    gap: 10px;
+
+}
+
+.selec-filtro{
+    font-size: 14px;
+    font-weight: 600;
+    margin: 0px 20px;
+    padding: 5px 5px;
+    border-radius: 5px;
+    border: none;
+    background-color: #FFD9B9;
+}
+
+#CrearPubDatos{
+    font-family: 'Montserrat', sans-serif;
+}
+
+#CrearPubFiltros span{
+    font-size: 18px;
+    
+}
+
+#Titulo{
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    margin: 40px 0px;
+}
+
+#Titulo span{
+    
+    color: #585858;
+    font-weight: 600;
+    padding: 5px 0px;
+}
+
+#Titulo input{
+    padding: 5px 5px;
+    border: none;
+    border-radius: 5px;
+}
+
+#Titulo textarea{
+    padding: 5px 5px;
+    font-family: 'Montserrat', sans-serif;
+    border: none;
+    border-radius: 5px;
+}
+
+#PubTexto{
+    display: grid;
+}
+
+#PubTexto #content-textual{
+    font-family: 'Montserrat', sans-serif;
+    height: 100px;
+    padding: 5px 5px;
+    border: none;
+    border-radius: 5px;
+    margin-top: 30px;
+}
+
+#Down{
+    display: grid;
+    grid-template-columns: 2fr 8fr;
+}
+
+#Icons{
+    display: flex;
+}
+
+#Icons img{
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+}
+
+#PubButton{
+    text-align: right;
+}
+
+#PubButton button{
+    font-size: 14px;
+    color: white;
+    font-weight: 600;
+    margin: 5px;
+    border-radius: 10px;
+    background-color: #F99A5B;
+    border: none;
+    padding: 12px;
+    cursor: pointer;
+}

@@ -35,6 +35,10 @@
     
     </div>
    
+    <button mat-menu-item style="color: #ff6600; display: flex; justify-content: center; align-items: center;" *ngIf="authenticationService.isAuthenticated()">
+        Ver perfil
+    </button>
+    
     <button mat-menu-item style="color: #ff6600;" *ngIf="authenticationService.isAuthenticated()" (click)="logout()" >
         Cerrar sesion
     </button>

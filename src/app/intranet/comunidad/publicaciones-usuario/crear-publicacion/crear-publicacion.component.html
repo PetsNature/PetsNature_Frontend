@@ -2,20 +2,80 @@
     <div class="cont-textos" id="CrearPubFecha">
         <span>02/11/2023</span>
     </div>
+
     <div class="container" id="CrearPubTipo">
-        <button type="button" (click)="c=1" [style.background-color]="c === 1 ? '#FF9A5B' : 'white'" [style.color]="c === 1 ? 'white' : 'black'">
+        <button type="button" (click)="setCategoria('informacion')" [ngStyle]="getButtonStyles('informacion')">
             Información
         </button>
-        <button type="button" (click)="c=2" [style.background-color]="c === 2 ? '#FF9A5B' : 'white'" [style.color]="c === 2 ? 'white' : 'black'">
+        <button type="button" (click)="setCategoria('pregunta')" [ngStyle]="getButtonStyles('pregunta')">
             Preguntas
         </button>
-        <button type="button" (click)="c=3" [style.background-color]="c === 3 ? '#FF9A5B' : 'white'" [style.color]="c === 3 ? 'white' : 'black'">
+        <button type="button" (click)="setCategoria('recomendacion')" [ngStyle]="getButtonStyles('recomendacion')">
             Recomendaciones
         </button>
     </div>
+    
+    <div>
+        <div class="container" id="CrearPubFiltros">
+            <div class="Tema" id="Filtro">
+                <span id="NombreFiltro">
+                    Tema
+                </span>
+                <select class="selec-filtro" id="selec-filtro" [(ngModel)]="tema">
+                    <option value="No especificado">No especificado</option>
+                    <option value="Nutrición">Nutrición</option>
+                    <option value="Comportamiento">Comportamiento</option>
+                    <option value="Cuidados médicos">Cuidados médicos</option>
+                    <option value="Crianza">Crianza</option>
+                </select>
+                
+            </div>
+            <div class="TipodeMascota" id="Filtro">
+                <span id="NombreFiltro">
+                    Tipo de Mascota
+                </span>
+                <select class="selec-filtro" [(ngModel)]="tipoMascota" (change)="actualizarRazas()">
+                    <option value="No especificado">No especificado</option>
+                    <option value="Perros">Perros</option>
+                    <option value="Gatos">Gatos</option>
+                    <option value="Aves">Aves</option>
+                    <option value="Roedores">Roedores</option>
+                    <option value="Peces">Peces</option>
+                    <option value="Reptiles">Reptiles</option>
+                </select>
+            </div>
+            
+            <div class="Raza" id="Filtro">
+                <span id="NombreFiltro">
+                    Raza
+                </span>
+                <select class="selec-filtro" [(ngModel)]="raza">
+                    <option value="No especificada">No especificada</option>
+                    <option *ngFor="let r of razas" [value]="r">{{ r }}</option>
+                </select>
+            </div>
+        </div>
+    
+        <div class="container" id="CrearPubDatos">
+            <div id="PubTexto">
+                <textarea id="content-textual" placeholder="Escribe algo..." [(ngModel)]="contenido"></textarea>
+                <div *ngIf="mostrarAdvertenciaContenido" class="advertencia">¡El contenido es obligatorio!</div>
+            </div>
+            <div id="Titulo">
+                <span>Enlace de Interés</span>
+                <input type="text" placeholder="https://example.com" [(ngModel)]="e_interes">
+            </div>
+        </div>
+        
+        <div class="down" id="Down">
+            <div class="icons" id="Icons">
+                <a href="#img"><img src="https://i.ibb.co/zfhWtMs/imgpub.png"></a>
+            </div>
+            <div class="btn-publicar" id="PubButton">
+                <button (click)="publicar()">PUBLICAR</button>
+              </div>
+        </div>
+    </div>
 
-    <app-crear-info *ngIf="c==1"></app-crear-info>
-    <app-crear-pregunta *ngIf="c==2"></app-crear-pregunta>
-    <app-crear-recomendacion *ngIf="c==3"></app-crear-recomendacion>
 </div>
 
