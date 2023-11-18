@@ -5,12 +5,14 @@ import { InicioComponent } from './inicio.component';
 import { LayoutModule } from '../layout/layout.module';
 import { HttpClientModule } from '@angular/common/http';
 import { PaginaInicioComponent } from './pagina-inicio/pagina-inicio.component';
+import { UsuarioPerfilComponent } from './usuario-perfil/usuario-perfil.component';
 
 
 @NgModule({
   declarations: [
     InicioComponent,
     PaginaInicioComponent,
+    UsuarioPerfilComponent,
 
   ],
   

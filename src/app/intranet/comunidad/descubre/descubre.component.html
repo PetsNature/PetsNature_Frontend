@@ -2,22 +2,34 @@
 <app-breadcrumb></app-breadcrumb>
 
 <div class="container-flex" style="margin-bottom: 100px;">
+
     <div class="descubre" id="Descubre">
-        <div class="cuenta" id="Cuenta">
-            <img class="img-perfil" src="https://i.ibb.co/GpPLFRS/img-perfil.png"> 
-            <br>
-            <button type="button" routerLink="/intranet/descubre/crear" [ngStyle]="{'color': isCrearPublicacionesRoute ? 'white' : '', 'background-color': isCrearPublicacionesRoute ? '#F99A5B' : ''}">
-                <img src="../assets/crearpub-icon.png">
-                CREAR PUBLICACIÓN
-            </button>
-           
-            <button>
-                <img src="../assets/verpub-icon.png">
-                MIS PUBLICACIONES
-            </button>
+        <div>
+            <div class="cuenta" id="Cuenta">
+                <img class="img-perfil" src="https://i.ibb.co/GpPLFRS/img-perfil.png"> 
+                <br>
+                <button type="button" routerLink="/intranet/descubre/crear" [ngStyle]="{'color': isCrearPublicacionesRoute ? 'white' : '', 'background-color': isCrearPublicacionesRoute ? '#F99A5B' : ''}">
+                    <img src="../assets/crearpub-icon.png">
+                    CREAR PUBLICACIÓN
+                </button>
+            
+                <button type="button" routerLink="/intranet/descubre/mis_publicaciones" [ngStyle]="{'color': isMisPublicacionesRoute ? 'white' : '', 'background-color': isMisPublicacionesRoute ? '#F99A5B' : ''}">
+                    <img src="../assets/verpub-icon.png">
+                    MIS PUBLICACIONES
+                </button>
+            </div>
+            <div>
+                FILTRO XD
+            </div>
+
         </div>
+            
+
+
         <div id="Publicaciones">
             <router-outlet></router-outlet>
         </div>
+
     </div>
+
 </div>
