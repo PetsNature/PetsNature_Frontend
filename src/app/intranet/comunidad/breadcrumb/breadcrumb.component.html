@@ -1,15 +1,19 @@
 
-<nav id="B_Descubre" class="Breadcrumb" *ngIf="isDescubreRoute">
-    <ol class="Breadcrumb">
-        <li><a routerLink="/intranet">INICIO</a></li>
-        <li>DESCUBRE</li>
-    </ol>
-</nav>
-
-<nav id="B_Descubre_Crear publicación" class="Breadcrumb" *ngIf="isCrearPublicacionesRoute">
-    <ol class="Breadcrumb">
+<ng-container *ngIf="isCrearPublicacionesRoute; else descubreBreadcrumb">
+    <nav id="B_Descubre_Crear publicación" class="Breadcrumb">
+      <ol class="Breadcrumb">
         <li><a routerLink="/intranet">INICIO</a></li>
         <li><a routerLink="/intranet/descubre">DESCUBRE</a></li>
         <li>CREAR PUBLICACIÓN</li>
-    </ol>
-</nav>
+      </ol>
+    </nav>
+  </ng-container>
+  <ng-template #descubreBreadcrumb>
+    <nav id="B_Descubre" class="Breadcrumb" *ngIf="isDescubreRoute">
+      <ol class="Breadcrumb">
+        <li><a routerLink="/intranet">INICIO</a></li>
+        <li>DESCUBRE</li>
+      </ol>
+    </nav>
+  </ng-template>
+  

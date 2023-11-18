@@ -1,5 +1,4 @@
-import { Component, inject , OnInit } from '@angular/core';
-//import { AuthenticationService } from 'src/app/authentication/authentication.service';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 
 @Component({
@@ -7,19 +6,40 @@ import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
   templateUrl: './descubre.component.html',
   styleUrls: ['./descubre.component.css']
 })
-export class DescubreComponent implements OnInit{
+export class DescubreComponent implements OnInit {
   isCrearPublicacionesRoute: boolean = false;
-  ngOnInit(){}
+  buttonStyle: any = {};
+
+  ngOnInit() {
+    this.checkRouteConditions();
+
+    // Recuperar el estado almacenado
+    const storedColor = localStorage.getItem('breadcrumbButtonColor');
+    if (storedColor) {
+      this.buttonStyle = {
+        color: storedColor === 'white' ? 'white' : '',
+        'background-color': storedColor === '#F99A5B' ? '#F99A5B' : ''
+      };
+    }
+  }
 
   constructor(private route: ActivatedRoute, private router: Router) {
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
-        this.isCrearPublicacionesRoute = this.router.url === '/intranet/descubre/crear';
+        this.checkRouteConditions();
+        // Almacenar el estado después de verificar las condiciones
+        localStorage.setItem('breadcrumbButtonColor', this.getButtonColor());
       }
-
     });
+  }
 
-  
+  private checkRouteConditions() {
+    const currentRoute = this.router.url;
+    this.isCrearPublicacionesRoute = this.router.isActive('/intranet/descubre/crear', false);
+  }
+
+  private getButtonColor(): string {
+    return this.isCrearPublicacionesRoute ? '#F99A5B' : '';
+  }
 }
 
-}
