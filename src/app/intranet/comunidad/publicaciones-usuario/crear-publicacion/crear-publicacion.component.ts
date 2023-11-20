@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { PublicacionService } from '../../publicacion.service';
 
 @Component({
   selector: 'app-crear-publicacion',
@@ -6,7 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./crear-publicacion.component.css']
 })
 
-export class CrearPublicacionComponent {
+export class CrearPublicacionComponent implements OnInit {
  
   categoria: string = 'informacion'; //por defecto es informacion
   tema: string= 'No especificado';
@@ -17,6 +18,13 @@ export class CrearPublicacionComponent {
   mostrarAdvertenciaContenido: boolean = false;
   e_interes: string ='';
 
+  publicacionActual: any;
+
+  constructor(private publicacionService: PublicacionService) { }
+
+  ngOnInit() {
+    this.publicacionActual = this.publicacionService.getPublicacionActual();
+  }
   
 
   razasPorTipo: { [key: string]: string[] } = {
@@ -27,6 +35,12 @@ export class CrearPublicacionComponent {
     "Peces": ["Guppy", "Tetra Neón", "Pez Ángel", "Betta", "Corydoras", "Goldfish"],
     "Reptiles": ["Iguana Verde", "Gecko Leopardo", "Tortuga de Caja", "Serpiente de Maíz", "Dragón Barbudo", "Tortuga de Orejas Rojas"]
   };
+
+  generarId(): string {
+    let fecha = new Date();
+    return fecha.getTime().toString();
+  }
+  
 
   setCategoria(nuevaCategoria: string): void {
     this.categoria = nuevaCategoria;
@@ -53,23 +67,42 @@ export class CrearPublicacionComponent {
     this.raza = 'No especificada'; // Limpia la selección de raza
   }
 
+  guardarPublicacion(publicacion: any) {
+    let publicaciones = this.cargarPublicaciones();
+    publicaciones.push(publicacion);
+    localStorage.setItem('publicaciones', JSON.stringify(publicaciones));
+  }
+  
+  cargarPublicaciones(): any[] {
+    let publicaciones = localStorage.getItem('publicaciones');
+    if (publicaciones !== null) {
+      return JSON.parse(publicaciones);
+    } else {
+      return [];
+    }
+  }
+  
+
   publicar() {
     if (this.contenido) {
-      // Todos los campos están llenos, mostrar un console.log
       this.mostrarAdvertenciaContenido = false;
-      console.log('Atributos de la publicación:');
-      console.log('Categoria:', this.categoria)
-      console.log('Tema:', this.tema);
-      console.log('Tipo de Mascota:', this.tipoMascota);
-      console.log('Raza:', this.raza);
-      console.log('Contenido:', this.contenido);
-      console.log('Enlace de Interés:', this.e_interes);
-      this.limpiar_pub()
-
+      let nuevaPublicacion = {
+        id: this.generarId(),
+        categoria: this.categoria,
+        tema: this.tema,
+        tipoMascota: this.tipoMascota,
+        raza: this.raza,
+        contenido: this.contenido,
+        e_interes: this.e_interes,
+        comentarios: []
+      };
+      this.guardarPublicacion(nuevaPublicacion);
+      this.publicacionService.setPublicacionActual(nuevaPublicacion);
+      this.limpiar_pub();
+      console.log('Publicación creada:', nuevaPublicacion);
     } else {
-      // Mostrar advertencias para campos faltantes
-      this.mostrarAdvertenciaContenido = !this.contenido;
+      this.mostrarAdvertenciaContenido = true;
     }
-    
   }
+  
 }
