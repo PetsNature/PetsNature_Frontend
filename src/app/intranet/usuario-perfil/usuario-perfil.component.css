@@ -1,0 +1,120 @@
+
+/*BREADCRUMB*/
+ol.Breadcrumb{
+    padding: 10px 20px; 
+    list-style: none; 
+    margin-top: 5px; 
+    margin-left: 16px; 
+    margin-bottom: 16px;
+}
+
+ol.Breadcrumb li{
+    display: inline;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+ol.Breadcrumb li a{
+    color: #FF9A5B;
+}
+
+ol.Breadcrumb li+li::before{
+    padding: 4px;
+    color: black;
+    content: "/\00a0";
+}
+/*INFO-CUENTA*/
+
+#Info-Cuenta{
+    padding: 20px 60px;
+    margin-bottom: 150px;
+}
+
+#caja{
+    display: grid;
+    grid-template-columns: 4fr 6fr;
+    
+}
+
+#Foto-Perfil{
+    text-align: center;
+    width: 300px;
+    margin-left: 150px;
+}
+
+#Foto-Perfil img{
+    width: 300px;
+    height: 300px;
+    margin: 50px 0px;
+    margin-bottom: 20px;
+    align-items: center;
+}
+
+#Foto-Perfil #Subirimg{
+    
+    display: inline-block; 
+    width: 75%; 
+    padding: 10px 0px; 
+    background-color: #FF9A5B; 
+    color: white; 
+    font-size: 16px; 
+    border: none; 
+    border-radius: 10px; 
+    cursor: pointer;
+    
+}
+
+#caja-datos{
+    justify-content: center;
+    margin-top: 50px;
+    padding-right: 80px;
+    
+}
+
+#datos{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: 20px 80px;
+}
+
+#datos label{
+    font-size: 22px;
+    padding: 5px 0px;
+    font-weight: 700;
+}
+
+#datos input{
+    font-size: 16px;
+    text-align: center;
+    padding: 5px 40px;
+    border: none;
+    border-radius: 12px;
+    background-color: #FFF2E7;
+
+}
+
+#datos button{
+    background-color: #FF9A5B;
+    padding: 4px 8px;
+    border-radius: 5px;
+    margin-left: 10px;
+    border: none;
+}
+#datos img{
+    height: 16px;
+    width: 16px;
+}
+
+#background-datos{
+    margin-top: 20px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    border-radius: 30px;
+    background-color: #ffdbc4;
+    margin-right: 50px;
+}
+#div{
+    background-color: #F99A5B;
+    height: 3px;
+}
+
