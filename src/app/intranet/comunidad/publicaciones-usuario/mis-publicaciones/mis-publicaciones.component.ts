@@ -26,6 +26,10 @@ export class MisPublicacionesComponent implements OnInit {
   ngOnInit() {
     // Obtenemos todas las publicaciones del servicio
     this.publicaciones = this.publicacionService.getPublicaciones();
+    // Ordenamos las publicaciones por fecha de creación en orden descendente
+    this.publicaciones.sort((a, b) => {
+      return <any>new Date(b.fecha_creacion) - <any>new Date(a.fecha_creacion);
+    });
     // Aseguramos que cada publicación tenga su propio conjunto de comentarios
     for (let publicacion of this.publicaciones) {
       publicacion.comentarios = [];
@@ -61,10 +65,20 @@ export class MisPublicacionesComponent implements OnInit {
       alert('Límite de caracteres sobrepasado');
       return;
     }
+    
+    // Obtenemos la fecha actual
+    let fechaActual = new Date();
+    
+    // Formateamos la fecha en el formato DD/MM/AA
+    let fechaFormateada = ('0' + fechaActual.getDate()).slice(-2) + '/'
+                       + ('0' + (fechaActual.getMonth()+1)).slice(-2) + '/'
+                       + fechaActual.getFullYear().toString().substr(-2);
+    
     const nuevoComentario = {
       id: publicacion.comentarios.length + 1,
       usuario: usuario,
       contenido: contenido,
+      fecha: fechaFormateada,  // Agregamos la fecha al comentario
       respuestas: []
     };
   
@@ -73,16 +87,27 @@ export class MisPublicacionesComponent implements OnInit {
     this.guardarComentarios();
   }
   
+  
 
   agregarRespuesta(publicacion: any, commentId: number, usuario: string, contenido: string, esRespuesta: boolean) {
     if (contenido.length < 1 || contenido.length > 500) {
       alert('Límite de caracteres sobrepasado');
       return;
     }
+
+    // Obtenemos la fecha actual
+    let fechaActual = new Date();
+    
+    // Formateamos la fecha en el formato DD/MM/AA
+    let fechaFormateada = ('0' + fechaActual.getDate()).slice(-2) + '/'
+                       + ('0' + (fechaActual.getMonth()+1)).slice(-2) + '/'
+                       + fechaActual.getFullYear().toString().substr(-2);
+
     const nuevaRespuesta = {
       id: publicacion.comentarios[commentId - 1].respuestas.length + 1,
       usuario: usuario,
-      contenido: contenido
+      contenido: contenido,
+      fecha: fechaFormateada,  // Agregamos la fecha al comentario
     };
   
     publicacion.comentarios[commentId - 1].respuestas.push(nuevaRespuesta);

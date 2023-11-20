@@ -86,6 +86,15 @@ export class CrearPublicacionComponent implements OnInit {
   publicar() {
     if (this.contenido) {
       this.mostrarAdvertenciaContenido = false;
+      
+      // Obtenemos la fecha actual
+      let fechaActual = new Date();
+      
+      // Formateamos la fecha en el formato DD/MM/AA
+      let fechaFormateada = ('0' + fechaActual.getDate()).slice(-2) + '/'
+                         + ('0' + (fechaActual.getMonth()+1)).slice(-2) + '/'
+                         + fechaActual.getFullYear().toString().substr(-2);
+      
       let nuevaPublicacion = {
         id: this.generarId(),
         categoria: this.categoria,
@@ -94,6 +103,8 @@ export class CrearPublicacionComponent implements OnInit {
         raza: this.raza,
         contenido: this.contenido,
         e_interes: this.e_interes,
+        fecha: fechaFormateada,  // Agregamos la fecha a la publicación
+        fecha_creacion: fechaActual, 
         comentarios: []
       };
       this.guardarPublicacion(nuevaPublicacion);
@@ -104,5 +115,4 @@ export class CrearPublicacionComponent implements OnInit {
       this.mostrarAdvertenciaContenido = true;
     }
   }
-  
 }

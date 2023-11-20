@@ -42,6 +42,7 @@
 #comentario-content{
     display: flex;
     margin-bottom: 20px;
+    
 }
 
 #comentario-content button{
@@ -87,11 +88,10 @@ textarea{
     overflow: hidden;
 }
 
-
-
 #respuesta-content{
     display: flex;
     width: 100%;
+    margin-top: 10px;
 }
 
 #respuesta-content button{

@@ -6,13 +6,19 @@
                         <span id="Nombre">
                             YO
                         </span>
-                        <span id="time">10/11/23</span>
+                        <span id="time">{{ publicacion.fecha }}</span>
                     </div>
     </div>
 
     <div id="PubBody">
         <p>{{ publicacion.contenido }}</p>
-      </div>
+    
+        <div style="margin-bottom: 30px;" *ngIf="publicacion.e_interes && publicacion.e_interes.trim().length > 0">
+            <h4 style="color: #F99A5B; font-size: 18px; display: inline-block; margin-right: 5px;">Enlace de interés:</h4>
+            <a href="{{ publicacion.e_interes }}" target="_blank" style="color: rgb(96, 149, 248); text-decoration: underline; display: inline-block;">{{ publicacion.e_interes }}</a>
+        </div>
+    </div>
+    
       
      <div id="botones">
                     <a>
@@ -42,7 +48,7 @@
                                 <img src="./assets/img-perfil.png">
                                 <div id="cabecera-text">
                                 <span id="Nombre">{{ comment.usuario }}</span>
-                                <span id="time">10/19/23</span>
+                                <span id="time">{{ comment.fecha }}</span>
                                 </div>
                             </div>
                             <p id="com1">{{ comment.contenido }}</p>
@@ -66,7 +72,7 @@
                                     <img src="./assets/img-perfil.png">
                                     <div id="cabecera-text">
                                         <span id="Nombre">{{ respuesta.usuario }}</span>
-                                        <span id="time">10/19/23</span>
+                                        <span id="time">{{ respuesta.fecha }}</span>
                                     </div>
                                 </div>
                                 <p id="com1">{{ respuesta.contenido }}</p>
