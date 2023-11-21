@@ -47,7 +47,7 @@ export class InfoComponent {
     }
     const nuevoComentario = {
       id: this.comentarios.length + 1,
-      usuario: usuario,
+      usuario: "YO",
       contenido: contenido,
       respuestas: []
     };
@@ -64,7 +64,7 @@ export class InfoComponent {
     }
     const nuevaRespuesta = {
       id: this.comentarios[commentId - 1].respuestas.length + 1,
-      usuario: usuario,
+      usuario: "YO",
       contenido: contenido
     };
 

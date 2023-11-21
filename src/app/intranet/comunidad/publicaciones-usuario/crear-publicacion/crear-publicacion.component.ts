@@ -17,7 +17,7 @@ export class CrearPublicacionComponent implements OnInit {
   contenido: string = '';
   mostrarAdvertenciaContenido: boolean = false;
   e_interes: string ='';
-
+  selectedFile: File = new File([], '');
   publicacionActual: any;
 
   constructor(private publicacionService: PublicacionService) { }
@@ -60,7 +60,13 @@ export class CrearPublicacionComponent implements OnInit {
     this.contenido= '';
     this.e_interes= '';
     
+    // Restablecer la imagen de vista previa
+    let previewElement = <HTMLImageElement>document.getElementById('preview');
+    if (previewElement) {
+      previewElement.src = '';
+    }
   }
+  
 
   actualizarRazas() {
     this.razas = this.razasPorTipo[this.tipoMascota] || [];
@@ -82,7 +88,28 @@ export class CrearPublicacionComponent implements OnInit {
     }
   }
   
+  onFileSelected(event: Event) {
+    let inputElement = <HTMLInputElement>event.target;
+    if (inputElement.files && inputElement.files.length > 0) {
+      this.selectedFile = inputElement.files[0];
+      let reader = new FileReader();
+      reader.onload = (e) => {
+        let previewElement = <HTMLImageElement>document.getElementById('preview');
+        if (previewElement) {
+          previewElement.src = <string>reader.result;
+        }
+      }
+      reader.readAsDataURL(this.selectedFile);
+    }
+  }
 
+  triggerFileInput() {
+    let fileInput = document.getElementById('fileInput');
+    if (fileInput) {
+      fileInput.click();
+    }
+  }
+  
   publicar() {
     if (this.contenido) {
       this.mostrarAdvertenciaContenido = false;
@@ -105,14 +132,31 @@ export class CrearPublicacionComponent implements OnInit {
         e_interes: this.e_interes,
         fecha: fechaFormateada,  // Agregamos la fecha a la publicación
         fecha_creacion: fechaActual, 
-        comentarios: []
+        comentarios: [],
+        likes: 0,  // Aquí se almacenarán los "likes"
+        imagen: null, 
       };
-      this.guardarPublicacion(nuevaPublicacion);
-      this.publicacionService.setPublicacionActual(nuevaPublicacion);
-      this.limpiar_pub();
-      console.log('Publicación creada:', nuevaPublicacion);
+  
+      if (this.selectedFile.size > 0) {  // Verifica si se ha seleccionado un archivo
+        let reader = new FileReader();
+        reader.onload = (event: any) => {
+          nuevaPublicacion.imagen = event.target.result;
+          this.guardarPublicacion(nuevaPublicacion);
+          this.publicacionService.setPublicacionActual(nuevaPublicacion);
+          this.limpiar_pub();
+          console.log('Publicación creada:', nuevaPublicacion);
+        }
+        reader.readAsDataURL(this.selectedFile);
+      } else {  // Si no se ha seleccionado un archivo, guarda la publicación sin imagen
+        this.guardarPublicacion(nuevaPublicacion);
+        this.publicacionService.setPublicacionActual(nuevaPublicacion);
+        this.limpiar_pub();
+        console.log('Publicación creada:', nuevaPublicacion);
+      }
     } else {
       this.mostrarAdvertenciaContenido = true;
     }
   }
+  
+  
 }

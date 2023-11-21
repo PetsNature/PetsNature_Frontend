@@ -38,6 +38,19 @@ export class MisPublicacionesComponent implements OnInit {
     this.cargarComentarios();
   }
   
+  toggleLike(publicacion: any) {
+    if (publicacion.userHasLiked) {
+      // Si el usuario ya ha dado "like", lo quitamos
+      publicacion.likes--;
+      publicacion.userHasLiked = false;
+    } else {
+      // Si el usuario no ha dado "like", lo agregamos
+      publicacion.likes++;
+      publicacion.userHasLiked = true;
+    }
+    // Actualizamos el localStorage
+    this.publicacionService.updatePublicacion(publicacion);
+  }
   
 
   toggleComentarios() {
@@ -76,10 +89,10 @@ export class MisPublicacionesComponent implements OnInit {
     
     const nuevoComentario = {
       id: publicacion.comentarios.length + 1,
-      usuario: usuario,
+      usuario: "YO",
       contenido: contenido,
       fecha: fechaFormateada,  // Agregamos la fecha al comentario
-      respuestas: []
+      respuestas: [],
     };
   
     publicacion.comentarios.push(nuevoComentario);
@@ -105,7 +118,7 @@ export class MisPublicacionesComponent implements OnInit {
 
     const nuevaRespuesta = {
       id: publicacion.comentarios[commentId - 1].respuestas.length + 1,
-      usuario: usuario,
+      usuario: "YO",
       contenido: contenido,
       fecha: fechaFormateada,  // Agregamos la fecha al comentario
     };

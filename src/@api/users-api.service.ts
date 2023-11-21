@@ -18,7 +18,7 @@ export interface SaveUserResponse{
 export class UsersApiService {
 
   httpClient = inject(HttpClient)
-  url="poner la url del backend"
+  url="http://18.118.4.251/registro"
 
 getListUsers(){
     return lastValueFrom(this.httpClient.get<User[]>(this.url));

@@ -12,7 +12,12 @@
 
     <div id="PubBody">
         <p>{{ publicacion.contenido }}</p>
-    
+
+        <div style="margin-top: 35px;" id="cont-imagenes" *ngIf="publicacion.imagen">
+            <img id="imagen" [src]="publicacion.imagen" alt="Imagen de la publicación">
+          </div>
+          
+        
         <div style="margin-bottom: 30px;" *ngIf="publicacion.e_interes && publicacion.e_interes.trim().length > 0">
             <h4 style="color: #F99A5B; font-size: 18px; display: inline-block; margin-right: 5px;">Enlace de interés:</h4>
             <a href="{{ publicacion.e_interes }}" target="_blank" style="color: rgb(96, 149, 248); text-decoration: underline; display: inline-block;">{{ publicacion.e_interes }}</a>
@@ -21,15 +26,18 @@
     
       
      <div id="botones">
-                    <a>
-                        <img src="../assets/mg-icon.png">
-                    </a>
-                    <a >
+        <a (click)="toggleLike(publicacion)">
+            <img src="../assets/mg-icon.png">
+            <span *ngIf="publicacion.likes > 0" style="color: orange; margin-left: -12px; margin-right: 10px;">{{ publicacion.likes }}</span>  <!-- Aquí mostramos el número de "likes" -->
+          </a>
+          
+            <a >
                         <img src="../assets/coment-icon.png" (click)="publicacion.comentariosVisible = !publicacion.comentariosVisible" >
-                    </a>
-                    <a>
+            </a>
+
+            <a>
                         <img src="../assets/compartir-icon.png">
-                    </a>
+            </a>
       </div>
 
       <div id="comentario-content">

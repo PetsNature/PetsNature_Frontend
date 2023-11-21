@@ -59,7 +59,12 @@
         <div class="container" id="CrearPubDatos">
             <div id="PubTexto">
                 <textarea id="content-textual" placeholder="Escribe algo..." [(ngModel)]="contenido"></textarea>
-                <div *ngIf="mostrarAdvertenciaContenido" class="advertencia">¡El contenido es obligatorio!</div>
+                <div style="color: #F99A5B;" *ngIf="mostrarAdvertenciaContenido" class="advertencia">¡El contenido es obligatorio!</div>
+
+                <div id="cont-imagenes">
+                    <img id="preview" />
+                </div>
+
             </div>
             <div id="Titulo">
                 <span>Enlace de Interés</span>
@@ -69,7 +74,8 @@
         
         <div class="down" id="Down">
             <div class="icons" id="Icons">
-                <a href="#img"><img src="https://i.ibb.co/zfhWtMs/imgpub.png"></a>
+                <input type="file" id="fileInput" style="display: none;" (change)="onFileSelected($event)" />
+                <a><img style="cursor: pointer;" src="https://i.ibb.co/zfhWtMs/imgpub.png" (click)="triggerFileInput()"></a>
             </div>
             <div class="btn-publicar" id="PubButton">
                 <button (click)="publicar()">PUBLICAR</button>

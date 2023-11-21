@@ -83,6 +83,17 @@
     cursor: pointer;
 }
 
+#cont-imagenes{
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#Publicaciones #imagen{
+    max-width: 1072.65px;
+    max-height: 500px;
+    border-radius: 8px;
+}
+
 textarea{
     font-family: 'Montserrat', sans-serif;
     overflow: hidden;
@@ -92,6 +103,7 @@ textarea{
     display: flex;
     width: 100%;
     margin-top: 10px;
+    
 }
 
 #respuesta-content button{
@@ -116,7 +128,7 @@ textarea{
 
 #respuesta{
     width: 100%;
-    padding: 8px;
+    padding: 5px;
     border-radius: 2.5px;
     border: none;
 
@@ -164,6 +176,7 @@ textarea{
     margin: 20px 0px;
     color: #F99A5B;
     cursor: pointer;
+    
 }
 
 #responder:hover{

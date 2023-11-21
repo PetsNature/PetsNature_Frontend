@@ -35,5 +35,30 @@ export class PublicacionService {
     // Guarda la publicación en el localStorage
     localStorage.setItem('publicacionActual', JSON.stringify(this.publicacionActual));
   }
+
+  updatePublicacion(publicacionActualizada: any) {
+    // Obtenemos todas las publicaciones del localStorage
+    let publicaciones = this.getPublicaciones();
+  
+    // Buscamos la publicación que queremos actualizar
+    for (let i = 0; i < publicaciones.length; i++) {
+      if (publicaciones[i].id === publicacionActualizada.id) {
+        // Actualizamos la publicación
+        publicaciones[i] = publicacionActualizada;
+  
+        // Guardamos las publicaciones actualizadas en el localStorage
+        localStorage.setItem('publicaciones', JSON.stringify(publicaciones));
+  
+        return;
+      }
+    }
+  
+    // Si no encontramos la publicación, la agregamos al array de publicaciones
+    publicaciones.push(publicacionActualizada);
+  
+    // Guardamos las publicaciones actualizadas en el localStorage
+    localStorage.setItem('publicaciones', JSON.stringify(publicaciones));
+  }
+  
 }
 
