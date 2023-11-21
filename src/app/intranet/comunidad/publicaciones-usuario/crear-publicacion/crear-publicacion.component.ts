@@ -84,6 +84,7 @@ export class CrearPublicacionComponent implements OnInit {
     if (publicaciones !== null) {
       return JSON.parse(publicaciones);
     } else {
+    
       return [];
     }
   }

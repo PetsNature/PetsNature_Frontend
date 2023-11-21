@@ -29,6 +29,8 @@ export class DescubreComponent implements OnInit {
     this.isMisPublicacionesRoute = this.router.isActive('/intranet/descubre/mis_publicaciones', false);
   }
 
- 
+  esRutaDescubre(): boolean {
+    return this.router.url === '/intranet/descubre';
+  }
 }
 

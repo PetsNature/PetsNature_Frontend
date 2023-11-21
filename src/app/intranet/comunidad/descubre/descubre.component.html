@@ -18,9 +18,33 @@
                     MIS PUBLICACIONES
                 </button>
             </div>
-            <div>
-                FILTRO XD
-            </div>
+
+
+            <div id="Filtros" *ngIf="esRutaDescubre()">
+                <div id="header">
+                    <p id="title">FILTRAR POR</p><img src="../assets/filtro-icon.png">
+                </div>
+                
+                <div id="typefiltro">
+                    <p id="name">Tema</p>
+                    <select class="selec-filtro" id="selec-filtro">
+                        <option value="">No Seleccionado</option>
+                    </select>
+                </div>
+                <div id="typefiltro">
+                    <p id="name">Tipo de Mascota</p>
+                    <select class="selec-filtro" id="selec-filtro">
+                        <option value="">No Seleccionado</option>
+                    </select>
+                </div>
+                <div id="typefiltro">
+                    <p id="name">Raza</p>
+                    <select class="selec-filtro" id="selec-filtro">
+                        <option value="">No Seleccionado</option>
+                    </select>
+                </div>
+              </div>
+              
 
         </div>
             
