@@ -5,6 +5,7 @@ import { DescubreComponent } from './descubre/descubre.component';
 import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 import { PublicacionesComunidadModule } from './publicaciones-comunidad/publicaciones-comunidad.module';
 import { PublicacionesUsuarioModule } from './publicaciones-usuario/publicaciones-usuario.module';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import { PublicacionesUsuarioModule } from './publicaciones-usuario/publicacione
     ComunidadRoutingModule,
     PublicacionesComunidadModule,
     PublicacionesUsuarioModule,
+    FormsModule
     
   ],
   exports: [

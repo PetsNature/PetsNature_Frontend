@@ -27,23 +27,35 @@
                 
                 <div id="typefiltro">
                     <p id="name">Tema</p>
-                    <select class="selec-filtro" id="selec-filtro">
-                        <option value="">No Seleccionado</option>
+                    <select class="selec-filtro" id="selec-filtro" [(ngModel)]="tema">
+                        <option value="No especificado">No especificado</option>
+                        <option value="Nutrición">Nutrición</option>
+                        <option value="Comportamiento">Comportamiento</option>
+                        <option value="Cuidados médicos">Cuidados médicos</option>
+                        <option value="Crianza">Crianza</option>
                     </select>
                 </div>
                 <div id="typefiltro">
                     <p id="name">Tipo de Mascota</p>
-                    <select class="selec-filtro" id="selec-filtro">
-                        <option value="">No Seleccionado</option>
+                    <select class="selec-filtro" id="selec-filtro" [(ngModel)]="tipoMascota" (change)="actualizarRazas()">
+                        <option value="No especificado">No especificado</option>
+                        <option value="Perros">Perros</option>
+                        <option value="Gatos">Gatos</option>
+                        <option value="Aves">Aves</option>
+                        <option value="Roedores">Roedores</option>
+                        <option value="Peces">Peces</option>
+                        <option value="Reptiles">Reptiles</option>
                     </select>
                 </div>
                 <div id="typefiltro">
                     <p id="name">Raza</p>
-                    <select class="selec-filtro" id="selec-filtro">
-                        <option value="">No Seleccionado</option>
+                    <select class="selec-filtro" id="selec-filtro" [(ngModel)]="raza">
+                        <option value="No especificada">No especificada</option>
+                        <option *ngFor="let r of razas" [value]="r">{{ r }}</option>
                     </select>
                 </div>
-              </div>
+            </div>
+            
               
 
         </div>
