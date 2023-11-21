@@ -35,12 +35,15 @@
     </div>
     
     <div id="botones">
-        <a>
+        <a (click)="toggleLike(publicacion)">
             <img src="../assets/mg-icon.png">
-        </a>
-        <a >
-            <img src="../assets/coment-icon.png" (click)="toggleComentarios()" >
-        </a>
+            <span *ngIf="publicacion.likes > 0" style="color: orange; margin-left: -12px; margin-right: 10px;">{{ publicacion.likes }}</span>  <!-- Aquí mostramos el número de "likes" -->
+          </a>
+
+          <a>
+            <img src="../assets/coment-icon.png" (click)="toggleComentarios()">
+          </a>
+          
         <a>
             <img src="../assets/compartir-icon.png">
         </a>
@@ -55,14 +58,14 @@
     <div id="PubComentarios" *ngIf="comentariosVisible">
         <div id="div"></div>
 
-        <div id="Comment1" *ngFor="let comment of comentarios">
+        <div id="Comment1" *ngFor="let comment of publicacion.comentarios">
         <div id="onlycom">
             <div id="caja-com">
                 <div id="cabecera">
                     <img src="./assets/img-perfil.png">
                     <div id="cabecera-text">
                     <span id="Nombre">{{ comment.usuario }}</span>
-                    <span id="time">10/19/23</span>
+                    <span id="time">{{ comment.fecha }}</span>
                     </div>
                 </div>
                 <p id="com1">{{ comment.contenido }}</p>
@@ -71,7 +74,7 @@
                 </a>
                 <div id="respuesta-content" *ngIf="respuestasVisiblesComentario[comment.id]">
                     <textarea id="respuesta" class="form-control" placeholder="Responder comentario..." [(ngModel)]="nuevaRespuestaComentario[comment.id]" cdkTextareaAutosize cdkAutosizeMinRows="1" cdkAutosizeMaxRows="5"></textarea>
-                    <button (click)="agregarRespuesta(comment.id, 'NombreUsuario', nuevaRespuestaComentario[comment.id], false); limpiarRespuesta(comment.id, false)">
+                    <button (click)="agregarRespuesta(publicacion, comment.id, 'NombreUsuario', nuevaRespuestaComentario[comment.id], false); limpiarRespuesta(comment.id, false)">
                         <img src="./assets/enviar-icon.png">
                     </button>
                 </div>
@@ -85,26 +88,28 @@
                         <img src="./assets/img-perfil.png">
                         <div id="cabecera-text">
                             <span id="Nombre">{{ respuesta.usuario }}</span>
-                            <span id="time">10/19/23</span>
+                            <span id="time">{{ respuesta.fecha }}</span>
                         </div>
                     </div>
+
                     <p id="com1">{{ respuesta.contenido }}</p>
                     <a id="responder" (click)="toggleRespuestaRespuesta(respuesta.id)">
                         Responder...
                     </a>
+                    
                     <div id="respuesta-content" *ngIf="respuestasVisiblesRespuesta[respuesta.id]">
                         <textarea id="respuesta" class="form-control" placeholder="Responder comentario..." [(ngModel)]="nuevaRespuestaRespuesta[respuesta.id]" cdkTextareaAutosize cdkAutosizeMinRows="1" cdkAutosizeMaxRows="5"></textarea>
-                        <button (click)="agregarRespuesta(respuesta.id, 'NombreUsuario', nuevaRespuestaRespuesta[respuesta.id], true); limpiarRespuesta(respuesta.id, true)">
+                        <button (click)="agregarRespuesta(publicacion, comment.id, 'NombreUsuario', nuevaRespuestaRespuesta[respuesta.id], true); limpiarRespuesta(respuesta.id, true)">
                             <img src="./assets/enviar-icon.png">
                         </button>
                     </div>
                     
-                    
-                
                 </div>
             </div>
         </div>
 
         </div>
     </div>
+
+    
 </div>
