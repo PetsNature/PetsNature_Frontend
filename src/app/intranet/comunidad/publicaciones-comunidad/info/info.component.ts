@@ -13,8 +13,6 @@ export interface Comentario {
   templateUrl: './info.component.html',
   styleUrls: ['./info.component.css']
 })
-
-
 export class InfoComponent {
 
   comentariosVisible = false;
@@ -27,11 +25,13 @@ export class InfoComponent {
   nuevaRespuestaRespuesta: { [key: number]: string } = {};
 
   publicacion = {
+    id: 1,  // Asegúrate de que este id sea único para cada publicación
     likes: 0,
     likeDado: false,
     comentarios: [] as Comentario[],
     comentariosVisible: false,
   };
+  
 
   constructor() {
     this.cargarComentarios();
@@ -43,19 +43,11 @@ export class InfoComponent {
   }
 
   toggleRespuestaComentario(commentId: number) {
-    if (this.respuestasVisiblesComentario[commentId] === undefined) {
-      this.respuestasVisiblesComentario[commentId] = true;
-    } else {
-      this.respuestasVisiblesComentario[commentId] = !this.respuestasVisiblesComentario[commentId];
-    }
+    this.respuestasVisiblesComentario[commentId] = !this.respuestasVisiblesComentario[commentId];
   }
 
   toggleRespuestaRespuesta(respuestaId: number) {
-    if (this.respuestasVisiblesRespuesta[respuestaId] === undefined) {
-      this.respuestasVisiblesRespuesta[respuestaId] = true;
-    } else {
-      this.respuestasVisiblesRespuesta[respuestaId] = !this.respuestasVisiblesRespuesta[respuestaId];
-    }
+    this.respuestasVisiblesRespuesta[respuestaId] = !this.respuestasVisiblesRespuesta[respuestaId];
   }
 
   agregarComentario(usuario: string, contenido: string) {
@@ -85,7 +77,6 @@ export class InfoComponent {
     this.guardarComentarios();
 
   }
-  
 
   agregarRespuesta(publicacion: any, commentId: number, usuario: string, contenido: string, esRespuesta: boolean) {
     if (contenido.length < 1 || contenido.length > 500) {
@@ -107,7 +98,7 @@ export class InfoComponent {
       fecha: fechaFormateada, 
     };
 
-    this.comentarios[commentId - 1].respuestas.push(nuevaRespuesta);
+    this.publicacion.comentarios[commentId - 1].respuestas.push(nuevaRespuesta);
     this.limpiarRespuesta(commentId, esRespuesta);  // Limpia la respuesta después de agregarla
     if (esRespuesta) {
       this.respuestasVisiblesRespuesta[commentId] = false;  // Oculta el input después de agregar la respuesta
@@ -116,7 +107,6 @@ export class InfoComponent {
     }
     this.guardarComentarios();
   }
-
   limpiarRespuesta(commentId: number, esRespuesta: boolean) {
     if (esRespuesta) {
       this.nuevaRespuestaRespuesta[commentId] = '';
@@ -126,30 +116,17 @@ export class InfoComponent {
   }
 
   guardarComentarios() {
-    localStorage.setItem('comentarios', JSON.stringify(this.comentarios));
+    localStorage.setItem('comentarios', JSON.stringify(this.publicacion.comentarios));
   }
-
+  
   cargarComentarios() {
     let comentarios = localStorage.getItem('comentarios');
     if (comentarios !== null) {
-      this.comentarios = JSON.parse(comentarios);
-    } else {
-      // Manejar el caso cuando los comentarios son null
-      this.comentarios = [];
+      this.publicacion.comentarios = JSON.parse(comentarios);
     }
-  }
-
-
-  toggleLike(publicacion: any) {
-    if (publicacion.likeDado) {
-      publicacion.likes--;
-    } else {
-      publicacion.likes++;
-    }
-    publicacion.likeDado = !publicacion.likeDado;
-    this.guardarPublicacion();
   }
   
+
 
   guardarPublicacion() {
     localStorage.setItem('publicacion', JSON.stringify(this.publicacion));
@@ -161,10 +138,19 @@ export class InfoComponent {
       this.publicacion = JSON.parse(publicacion);
     } else {
       // Manejar el caso cuando la publicación es null
-      this.publicacion = { likes: 0, likeDado: false, comentarios: [], comentariosVisible: false };
+      this.publicacion = { id:1,likes: 0, likeDado: false, comentarios: [], comentariosVisible: false };
 
     }
   }
+  toggleLike(publicacion: any) {
+    if (publicacion.likeDado) {
+      publicacion.likes--;
+    } else {
+      publicacion.likes++;
+    }
+    publicacion.likeDado = !publicacion.likeDado;
+    this.guardarPublicacion();
+  }
+  
   
 }
-

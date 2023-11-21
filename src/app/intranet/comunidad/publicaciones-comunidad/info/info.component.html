@@ -38,26 +38,26 @@
         <a (click)="toggleLike(publicacion)">
             <img src="../assets/mg-icon.png">
             <span *ngIf="publicacion.likes > 0" style="color: orange; margin-left: -12px; margin-right: 10px;">{{ publicacion.likes }}</span>  <!-- Aquí mostramos el número de "likes" -->
-          </a>
-
-          <a>
+        </a>
+    
+        <a>
             <img src="../assets/coment-icon.png" (click)="toggleComentarios()">
-          </a>
-          
+        </a>
+        
         <a>
             <img src="../assets/compartir-icon.png">
         </a>
     </div>
-
+    
     <div id="comentario-content">
         <textarea id="comentario" class="form-control" placeholder="Comentar publicación..." [(ngModel)]="nuevoComentario" cdkTextareaAutosize cdkAutosizeMinRows="1" cdkAutosizeMaxRows="5"></textarea>
         <button (click)="agregarComentario('NombreUsuario', nuevoComentario)">
             <img src="../assets/enviar-icon.png"></button>
     </div>
-
+    
     <div id="PubComentarios" *ngIf="comentariosVisible">
         <div id="div"></div>
-
+    
         <div id="Comment1" *ngFor="let comment of publicacion.comentarios">
         <div id="onlycom">
             <div id="caja-com">
@@ -91,7 +91,7 @@
                             <span id="time">{{ respuesta.fecha }}</span>
                         </div>
                     </div>
-
+    
                     <p id="com1">{{ respuesta.contenido }}</p>
                     <a id="responder" (click)="toggleRespuestaRespuesta(respuesta.id)">
                         Responder...
@@ -103,13 +103,8 @@
                             <img src="./assets/enviar-icon.png">
                         </button>
                     </div>
-                    
                 </div>
             </div>
-        </div>
-
-        </div>
-    </div>
-
+    
     
 </div>
