@@ -173,3 +173,14 @@ textarea{
     text-decoration: underline;
     text-decoration-color: #F99A5B;
 }
+
+#cont-imagenes{
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#cont-imagenes #imagen{
+    max-width: 1072.65px;
+    max-height: 500px;
+    border-radius: 8px;
+}
