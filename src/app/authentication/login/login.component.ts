@@ -21,25 +21,25 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
-  validar(){
-    if (!this.authentication.correo || !this.authentication.contrasena ) {
-      this.authentication.correo=''
-      this.authentication.contrasena=''
-      this.m='Por favor, complete todos los campos'
+  async validar() {
+    if (!this.authentication.correo || !this.authentication.contrasena) {
+      this.authentication.correo = ''
+      this.authentication.contrasena = ''
+      this.m = 'Por favor, complete todos los campos'
 
-    }   else {
-      this.login()
-      if(!this.authenticationService.isAuthenticated()){
-        this.m='Usuario y/o contraseña no encontrado'
-        this.authentication.correo=''
-        this.authentication.contrasena=''
+    } else {
+      await this.login()
+      if (!this.authenticationService.isAuthenticated()) {
+        this.m = 'Usuario y/o contraseña no encontrado'
+        this.authentication.correo = ''
+        this.authentication.contrasena = ''
       }
     }
   }
 
-  login() {
+  async login() {
     console.log('try to login')
-    this.authenticationService.login(this.authentication);
+    await this.authenticationService.login(this.authentication);
   }
 
 }

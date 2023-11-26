@@ -2,7 +2,8 @@ import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import {catchError, lastValueFrom, observeOn, pipe, throwError} from 'rxjs';
 
-export interface Usuario { //poner mismo modelo json que el backend
+export interface Usuario {
+  id: number//poner mismo modelo json que el backend
   nombre: string
   correo: string
   imgPerfil: string
@@ -27,11 +28,11 @@ export class UsersApiService {
   httpClient = inject(HttpClient)
 
   async registerUser(user:UsuarioRegistro){
-      return lastValueFrom(this.httpClient.post<Usuario[]>("http://localhost:8080/registro",user));
+      return lastValueFrom(this.httpClient.post<Usuario[]>("http://localhost:8080/registro",user,{ headers:{'No-Token': 'true' }}));
   }
 
   async loginUser(user: UsuarioLogin){
-    return lastValueFrom(this.httpClient.post<Usuario>("http://localhost:8080/login", user).pipe(
+    return lastValueFrom(this.httpClient.post<Usuario>("http://localhost:8080/login2", user,{ headers:{'No-Token': 'true' }}).pipe(
       catchError((error: HttpErrorResponse) => {
         if (error.status === 403) {
           return throwError(() => new Error(error.message));
@@ -42,21 +43,5 @@ export class UsersApiService {
         }
       })
     ));
-  }
-
-  private handleError(error: any) {
-    if (error.error && error.error.message) {
-      // Si el servidor devuelve un objeto con un campo 'message', utiliza ese mensaje
-      return throwError(() => new Error(error.error.message));
-    } else if (error.status === 401) {
-      // Manejar error de autenticación
-      return  throwError(() => new Error('Usuario o contrasena no validos'));
-    } else if (error.status === 403) {
-      // Manejar error de autorización
-      return throwError(() => new Error('No tienes permisos para acceder'));
-    } else {
-      // Manejar otros tipos de errores
-      return throwError(() => new Error('Intentalo mas tarde'));
-    }
   }
 }
