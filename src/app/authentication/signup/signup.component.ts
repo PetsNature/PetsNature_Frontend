@@ -1,5 +1,6 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { AuthenticationService } from '../authentication.service';
+import {UsuarioRegistro} from "../../../@api/users-api.service";
 
 interface User { //poner mismo modelo json que el backend
   name: string;
@@ -13,43 +14,42 @@ interface User { //poner mismo modelo json que el backend
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent implements OnInit{
-  authenticationService = inject(AuthenticationService)
+  authenticationService= inject(AuthenticationService)
   passwordv: string = '';
-  user: User = {
-    name: '',
-    email: '',
-    password: '',
+  user: UsuarioRegistro = {
+    nombre: '',
+    correo: '',
+    contrasena: '',
   };
-  
+
   ngOnInit() {
   }
   signup() {
-   
-    if (!this.user.name) {
-      this.user.name = ''; 
-      return; 
+
+    if (!this.user.nombre) {
+      this.user.nombre = '';
+      return;
     }
 
-    if (!this.user.email || !this.validarCorreo(this.user.email)) {
-      this.user.email = ''; 
-      return; 
+    if (!this.user.correo || !this.validarCorreo(this.user.correo)) {
+      this.user.correo = '';
+      return;
     }
 
-    if (!this.user.password || this.user.password.length < 8 || !this.validarContrasena(this.user.password)) {
-      this.user.password = ''; 
-      this.passwordv = ''; 
-      return; 
-    }
-
-    if (this.user.password !== this.passwordv) {
+    if (!this.user.contrasena || this.user.contrasena.length < 8 || !this.validarContrasena(this.user.contrasena)) {
+      this.user.contrasena = '';
       this.passwordv = '';
-      this.user.password = '';  
-      return; 
+      return;
     }
-    //metodo para agregar al usuario a la base de datos del sistema
-    alert('Registro exitoso'+this.user.name+this.user.email) //este mensaje iria en dicho metodo
-    this.login()
-    
+
+    if (this.user.contrasena !== this.passwordv) {
+      this.passwordv = '';
+      this.user.contrasena = '';
+      return;
+    }
+    this.authenticationService.register(this.user)//metodo para agregar al usuario a la base de datos del sistema
+    alert('Registro exitoso'+this.user.nombre+this.user.correo) //este mensaje iria en dicho metodo
+    this.authenticationService.login(this.user.correo, this.user.contrasena)
   }
 
   validarCorreo(correo: string): boolean {
@@ -64,10 +64,10 @@ export class SignupComponent implements OnInit{
     return patron.test(contrasena);
   }
 
-  login() {
+  /*login() {
     console.log('try to login')
-    this.authenticationService.login(this.user.email, this.user.password);
+    this.authenticationService.login(this.user.correo, this.user.contrasena);
 
-  }
+  }*/
 
 }

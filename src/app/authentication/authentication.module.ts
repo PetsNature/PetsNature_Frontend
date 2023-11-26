@@ -5,9 +5,10 @@ import { SignupComponent } from './signup/signup.component';
 import { IngresoComponent } from './ingreso/ingreso.component';
 import { AuthenticationRoutingModule } from './authentication-routing.module';
 import { FormsModule } from '@angular/forms';
-import { ReactiveFormsModule } from '@angular/forms'; 
+import { ReactiveFormsModule } from '@angular/forms';
 import { LayoutModule } from '../layout/layout.module';
 import { HttpClientModule } from '@angular/common/http';
+import {UsersApiService} from "../../@api/users-api.service";
 
 
 @NgModule({
@@ -15,7 +16,7 @@ import { HttpClientModule } from '@angular/common/http';
     LoginComponent,
     SignupComponent,
     IngresoComponent,
- 
+
   ],
   imports: [
     CommonModule,
@@ -25,10 +26,9 @@ import { HttpClientModule } from '@angular/common/http';
     LayoutModule,
     HttpClientModule
 
-
   ]
 })
-export class AuthenticationModule { 
+export class AuthenticationModule {
   constructor() {
     console.log('AuthenticationModule loaded');
   }

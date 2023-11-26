@@ -28,7 +28,7 @@ export interface SavePublicacionResponse{
 export class PublicacionesApiService {
 
   httpClient = inject(HttpClient)
-  url="http://18.118.4.251/descubre/{id}/crear_publicacion" 
+  url="localhost:8080/descubre/{id}/crear_publicacion"
 
   getListPublicaciones(){
     return lastValueFrom(this.httpClient.get<Publicacion[]>(this.url));
