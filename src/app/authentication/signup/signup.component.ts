@@ -1,6 +1,6 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { AuthenticationService } from '../authentication.service';
-import {UsuarioRegistro} from "../../../@api/users-api.service";
+import {UsuarioLogin, UsuarioRegistro} from "../../../@api/users-api.service";
 
 interface User { //poner mismo modelo json que el backend
   name: string;
@@ -21,10 +21,14 @@ export class SignupComponent implements OnInit{
     correo: '',
     contrasena: '',
   };
+  userLogin: UsuarioLogin={
+    correo:'',
+    contrasena: '',
+  };
 
   ngOnInit() {
   }
-  signup() {
+  async signup() {
 
     if (!this.user.nombre) {
       this.user.nombre = '';
@@ -47,9 +51,19 @@ export class SignupComponent implements OnInit{
       this.user.contrasena = '';
       return;
     }
-    this.authenticationService.register(this.user)//metodo para agregar al usuario a la base de datos del sistema
-    alert('Registro exitoso'+this.user.nombre+this.user.correo) //este mensaje iria en dicho metodo
-    this.authenticationService.login(this.user.correo, this.user.contrasena)
+    try {
+      await this.authenticationService.register(this.user)
+    } catch (error) {
+      this.user.correo = ''
+      return;
+    } finally {
+      if (this.user.correo != '') {
+        alert('Registro exitoso' + this.user.nombre + this.user.correo)
+        this.userLogin.correo = this.user.correo
+        this.userLogin.contrasena = this.user.contrasena
+        this.authenticationService.login(this.userLogin)
+      }
+    }
   }
 
   validarCorreo(correo: string): boolean {

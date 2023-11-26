@@ -1,6 +1,6 @@
-import { HttpClient } from '@angular/common/http';
+import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { lastValueFrom} from 'rxjs';
+import {catchError, lastValueFrom, observeOn, pipe, throwError} from 'rxjs';
 
 export interface Usuario { //poner mismo modelo json que el backend
   nombre: string
@@ -31,10 +31,32 @@ export class UsersApiService {
   }
 
   async loginUser(user: UsuarioLogin){
-    return lastValueFrom(this.httpClient.post<Usuario[]>("http://localhost:8080/login", user));
+    return lastValueFrom(this.httpClient.post<Usuario>("http://localhost:8080/login", user).pipe(
+      catchError((error: HttpErrorResponse) => {
+        if (error.status === 403) {
+          return throwError(() => new Error(error.message));
+        } else if (error.status === 500) {
+          return throwError(() => new Error(error.message));
+        } else {
+          return throwError(() => new Error("Ocurrio un error desconocido"));
+        }
+      })
+    ));
   }
 
-  getListUsers(){
-    return lastValueFrom(this.httpClient.get<Usuario[]>("http://localhost:8080/usuarios"));
+  private handleError(error: any) {
+    if (error.error && error.error.message) {
+      // Si el servidor devuelve un objeto con un campo 'message', utiliza ese mensaje
+      return throwError(() => new Error(error.error.message));
+    } else if (error.status === 401) {
+      // Manejar error de autenticación
+      return  throwError(() => new Error('Usuario o contrasena no validos'));
+    } else if (error.status === 403) {
+      // Manejar error de autorización
+      return throwError(() => new Error('No tienes permisos para acceder'));
+    } else {
+      // Manejar otros tipos de errores
+      return throwError(() => new Error('Intentalo mas tarde'));
+    }
   }
 }
