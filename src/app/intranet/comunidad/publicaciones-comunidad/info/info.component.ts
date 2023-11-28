@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import {Publicaciones} from "../../../../../@api/publicaciones-api.service";
+import {PublicacionService} from "../../publicacion.service";
+import {DomSanitizer} from "@angular/platform-browser";
 
 export interface Comentario {
   id: number;
@@ -15,6 +18,7 @@ export interface Comentario {
 })
 export class InfoComponent {
 
+  publicaciones:Publicaciones[]=[];
   comentariosVisible = false;
   respuestasVisiblesComentario: { [key: number]: boolean } = {};
   respuestasVisiblesRespuesta: { [key: number]: boolean } = {};
@@ -31,11 +35,9 @@ export class InfoComponent {
     comentarios: [] as Comentario[],
     comentariosVisible: false,
   };
-  
-
-  constructor() {
-    this.cargarComentarios();
-    this.cargarPublicacion();
+  constructor(private publicacionService: PublicacionService,public sanitizer:DomSanitizer) {
+      this.cargarComentarios();
+      this.cargarPublicaciones();
   }
 
   toggleComentarios() {
@@ -57,12 +59,12 @@ export class InfoComponent {
     }
 
     let fechaActual = new Date();
-    
+
     // Formateamos la fecha en el formato DD/MM/AA
     let fechaFormateada = ('0' + fechaActual.getDate()).slice(-2) + '/'
                        + ('0' + (fechaActual.getMonth()+1)).slice(-2) + '/'
                        + fechaActual.getFullYear().toString().substr(-2);
-                       
+
     const nuevoComentario: Comentario = {
       id: this.publicacion.comentarios.length + 1,
       usuario: "YO",
@@ -70,7 +72,7 @@ export class InfoComponent {
       fecha: fechaFormateada,
       respuestas: []
     };
-    
+
     this.publicacion.comentarios.push(nuevoComentario);
     this.nuevoComentario = '';
     this.guardarPublicacion();
@@ -85,7 +87,7 @@ export class InfoComponent {
     }
 
     let fechaActual = new Date();
-    
+
     // Formateamos la fecha en el formato DD/MM/AA
     let fechaFormateada = ('0' + fechaActual.getDate()).slice(-2) + '/'
                        + ('0' + (fechaActual.getMonth()+1)).slice(-2) + '/'
@@ -95,7 +97,7 @@ export class InfoComponent {
       id: this.comentarios[commentId - 1].respuestas.length + 1,
       usuario: "YO",
       contenido: contenido,
-      fecha: fechaFormateada, 
+      fecha: fechaFormateada,
     };
 
     this.publicacion.comentarios[commentId - 1].respuestas.push(nuevaRespuesta);
@@ -118,20 +120,20 @@ export class InfoComponent {
   guardarComentarios() {
     localStorage.setItem('comentarios', JSON.stringify(this.publicacion.comentarios));
   }
-  
+
   cargarComentarios() {
     let comentarios = localStorage.getItem('comentarios');
     if (comentarios !== null) {
       this.publicacion.comentarios = JSON.parse(comentarios);
     }
   }
-  
+
 
 
   guardarPublicacion() {
     localStorage.setItem('publicacion', JSON.stringify(this.publicacion));
   }
-  
+
   cargarPublicacion() {
     let publicacion = localStorage.getItem('publicacion');
     if (publicacion !== null) {
@@ -142,6 +144,15 @@ export class InfoComponent {
 
     }
   }
+
+  async cargarPublicaciones() {
+    try {
+        this.publicaciones=await this.publicacionService.getPublicaciones2("informacion")
+    }catch (error){
+      console.error('Error',error)
+    }
+  }
+
   toggleLike(publicacion: any) {
     if (publicacion.likeDado) {
       publicacion.likes--;
@@ -151,6 +162,6 @@ export class InfoComponent {
     publicacion.likeDado = !publicacion.likeDado;
     this.guardarPublicacion();
   }
-  
-  
+
+
 }

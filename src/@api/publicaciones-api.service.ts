@@ -1,6 +1,6 @@
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { lastValueFrom} from 'rxjs';
+import {lastValueFrom, Observable} from 'rxjs';
 import {Time} from "@angular/common";
 
 /*export interface Publicacion1 {
@@ -53,6 +53,18 @@ export interface CrearPublicacion {
   contenido: string;
   categoria: string;
   enlace: string;
+  img:string;
+}
+
+export interface Publicaciones{
+    fecha: Date;
+    hora: Time;
+    contenido: string;
+    img: string;
+    enlace: string;
+    nombreU: string;
+    imgU: string;
+    reacciones:bigint;
 }
 
 export interface SavePublicacionResponse{
@@ -78,8 +90,11 @@ export class PublicacionesApiService {
   httpClient = inject(HttpClient)
 
 
-  async crearPublicacionSinImg(formData: FormData, id: number) {
-    console.log(formData.get('crearPublicacionSerializer'))
-    return lastValueFrom(this.httpClient.post<SavePublicacionResponse>(`http://localhost:8080/descubre/${id}/crear_publicacion`,formData,{ headers:{'No-Token': 'true'}}));
+  async crearPublicacion(crearPublicacion1: CrearPublicacion, id: number) {
+    return lastValueFrom(this.httpClient.post<SavePublicacionResponse>(`http://localhost:8080/descubre/${id}/crear_publicacion`,crearPublicacion1,{ headers:{'No-Token': 'true'}}));
+  }
+
+ async filtrarPublicacion(categoria: string) {
+    return lastValueFrom(this.httpClient.get<Publicaciones[]>(`http://localhost:8080/descubre/${categoria}/no especificado/no especificada/no seleccionado`, {headers:{'No-Token': 'true'}}));
   }
 }

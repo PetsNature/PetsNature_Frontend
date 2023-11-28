@@ -11,6 +11,5 @@ import { Component } from '@angular/core';
 //Ejemplo
 export class AppComponent {
   title = 'PetsNature'
-  
 
 }

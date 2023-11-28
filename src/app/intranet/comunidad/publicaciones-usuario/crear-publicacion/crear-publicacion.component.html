@@ -4,13 +4,13 @@
     </div>
 
     <div class="container" id="CrearPubTipo">
-        <button type="button" (click)="setCategoria2('informacion')" [ngStyle]="getButtonStyles('informacion')">
+        <button type="button" (click)="setCategoria('informacion')" [ngStyle]="getButtonStyles('informacion')">
             Información
         </button>
-        <button type="button" (click)="setCategoria2('pregunta')" [ngStyle]="getButtonStyles('pregunta')">
+        <button type="button" (click)="setCategoria('pregunta')" [ngStyle]="getButtonStyles('pregunta')">
             Preguntas
         </button>
-        <button type="button" (click)="setCategoria2('recomendacion')" [ngStyle]="getButtonStyles('recomendacion')">
+        <button type="button" (click)="setCategoria('recomendacion')" [ngStyle]="getButtonStyles('recomendacion')">
             Recomendaciones
         </button>
     </div>
@@ -23,11 +23,10 @@
                 </span>
                 <select class="selec-filtro" id="selec-filtro" [(ngModel)]="tema2.tema">
                     <option value="No especificado">No especificado</option>
-                    <option value="Nutrición">Nutrición</option>
+                    <option value="Alimentacion">Alimentacion</option>
                     <option value="Comportamiento">Comportamiento</option>
                     <option value="Cuidados médicos">Cuidados médicos</option>
                     <option value="Crianza">Crianza</option>
-                  <option value="Alimentacion">Alimentacion</option>
                 </select>
 
             </div>
@@ -35,7 +34,7 @@
                 <span id="NombreFiltro">
                     Tipo de Mascota
                 </span>
-                <select class="selec-filtro" [(ngModel)]="tipoMascota2.nombre">
+                <select class="selec-filtro" [(ngModel)]="tipoMascota" (change)="actualizarRazas()">
                     <option value="No especificado">No especificado</option>
                     <option value="Perros">Perros</option>
                     <option value="Gatos">Gatos</option>
@@ -50,8 +49,8 @@
                 <span id="NombreFiltro">
                     Raza
                 </span>
-                <select class="selec-filtro" [(ngModel)]="raza2.nombre">
-                    <option value="Poodle">Poodle</option>
+                <select class="selec-filtro" [(ngModel)]="raza">
+                    <option value="No especificada">No especificada</option>
                     <option *ngFor="let r of razas" [value]="r">{{ r }}</option>
                 </select>
             </div>
@@ -75,7 +74,7 @@
 
         <div class="down" id="Down">
             <div class="icons" id="Icons">
-                <input type="file" id="fileInput" style="display: none;" (change)="handleFileInput($event)" />
+                <input type="file" id="fileInput" style="display: none;" (change)="onFileSelected($event)" />
                 <a><img style="cursor: pointer;" src="https://i.ibb.co/zfhWtMs/imgpub.png" (click)="triggerFileInput()"></a>
             </div>
             <div class="btn-publicar" id="PubButton">

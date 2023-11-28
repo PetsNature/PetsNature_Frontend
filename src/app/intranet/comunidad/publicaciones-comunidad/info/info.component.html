@@ -1,110 +1,103 @@
+<div id="Publicaciones" *ngFor="let publicacion of publicaciones">
 <div class="container" id="PubInfo">
+
     <div id="cabecera">
-        <img src="https://i.ibb.co/hyNMTpx/perfil-xd.png">
+        <img src="assets/img-perfil.png">
         <div id="cabecera-text">
             <span id="Nombre">
-                LUCÍA CARMEN ESPINOZA ROJAS
+              {{publicacion.nombreU}}
             </span>
-            <span id="time">10/11/23</span>
+            <span id="time">{{publicacion.fecha}}</span>
         </div>
     </div>
     <div id="PubBody">
-        <p>🚨 ¡Atención amantes de las mascotas! 🐾 Quiero hablarles sobre una enfermedad que afecta a muchos de nuestros adorables amigos peludos: la artritis canina. Es crucial estar informados para cuidar de nuestros compañeros de cuatro patas. Aquí van algunos consejos:
-            🦴 Reconoce los signos: La artritis puede manifestarse de diversas formas, desde cojera hasta cambios en el comportamiento. Presta atención a cualquier señal de molestia o rigidez, especialmente en mascotas mayores.
-            🌱 Dieta y suplementos: Consulta con tu veterinario sobre dietas y suplementos que puedan ayudar a aliviar los síntomas de la artritis. Algunos ácidos grasos omega-3 y glucosamina pueden ser beneficiosos. 
-            🚶‍♂️ Ejercicio moderado: Aunque el reposo es necesario, el ejercicio moderado puede ayudar a mantener la movilidad de las articulaciones. Consulta con tu veterinario para desarrollar un plan de ejercicio adecuado. 
-            🛏️ Comodidades en casa: Asegúrate de que tu mascota tenga un lugar cómodo para descansar. Las camas ortopédicas o acolchadas pueden ayudar a aliviar la presión en las articulaciones.
-            👩‍⚕️ Chequeos regulares: Programa chequeos regulares con tu veterinario para monitorizar la artritis y ajustar el plan de tratamiento según sea necesario.
-            Recuerda, la artritis no tiene por qué limitar la calidad de vida de tu mascota. Con el cuidado adecuado, pueden seguir siendo felices y activos. ❤️
-            <br>
-            <br>
-            <span id="Hashtag">#CuidadoDeMascotas #DebateAnimal #AmorIncondicional</span>
-        </p>
+        <p>{{publicacion.contenido}}</p>
 
-        <div id="cont-imagenes">
-            <img id="imagen" src="../assets/artritis_perros.jpg">
+        <div *ngIf="publicacion.img!='Sin imagen'" id="cont-imagenes">
+            <img id="imagen" [src]="publicacion.img">
         </div>
 
-        
-        <div style="margin-bottom: 30px;" >
+
+        <div *ngIf="publicacion.enlace && publicacion.enlace.trim().length > 0" style="margin-bottom: 30px;" >
             <h4 style="color: #F99A5B; font-size: 18px; display: inline-block; margin-right: 5px;">Enlace de interés:</h4>
-            <a href="https://www.respetmascotas.com/posts/artritis-perro.aspx" target="_blank" style="color: rgb(96, 149, 248); text-decoration: underline; display: inline-block;">https://www.respetmascotas.com/posts/artritis-perro.aspx</a>
-        
+            <a href="{{publicacion.enlace}}" target="_blank" style="color: rgb(96, 149, 248); text-decoration: underline; display: inline-block;">{{publicacion.enlace}}</a>
+
         </div>
-        
+
     </div>
-    
+
     <div id="botones">
         <a (click)="toggleLike(publicacion)">
-            <img src="../assets/mg-icon.png">
-            <span *ngIf="publicacion.likes > 0" style="color: orange; margin-left: -12px; margin-right: 10px;">{{ publicacion.likes }}</span>  <!-- Aquí mostramos el número de "likes" -->
+            <img src="assets/mg-icon.png">
+            <span *ngIf="publicacion.reacciones > 0" style="color: orange; margin-left: -12px; margin-right: 10px;">{{ publicacion.reacciones }}</span>  <!-- Aquí mostramos el número de "likes" -->
         </a>
-    
+
         <a>
             <img src="../assets/coment-icon.png" (click)="toggleComentarios()">
         </a>
-        
+
         <a>
             <img src="../assets/compartir-icon.png">
         </a>
     </div>
-    
+
     <div id="comentario-content">
-        <textarea id="comentario" class="form-control" placeholder="Comentar publicación..." [(ngModel)]="nuevoComentario" cdkTextareaAutosize cdkAutosizeMinRows="1" cdkAutosizeMaxRows="5"></textarea>
-        <button (click)="agregarComentario('NombreUsuario', nuevoComentario)">
-            <img src="../assets/enviar-icon.png"></button>
-    </div>
-    
-    <div id="PubComentarios" *ngIf="comentariosVisible">
-        <div id="div"></div>
-    
-        <div id="Comment1" *ngFor="let comment of publicacion.comentarios">
-        <div id="onlycom">
-            <div id="caja-com">
-                <div id="cabecera">
-                    <img src="./assets/img-perfil.png">
-                    <div id="cabecera-text">
-                    <span id="Nombre">{{ comment.usuario }}</span>
-                    <span id="time">{{ comment.fecha }}</span>
-                    </div>
-                </div>
-                <p id="com1">{{ comment.contenido }}</p>
-                <a id="responder" (click)="toggleRespuestaComentario(comment.id)">
-                    Responder...
-                </a>
-                <div id="respuesta-content" *ngIf="respuestasVisiblesComentario[comment.id]">
-                    <textarea id="respuesta" class="form-control" placeholder="Responder comentario..." [(ngModel)]="nuevaRespuestaComentario[comment.id]" cdkTextareaAutosize cdkAutosizeMinRows="1" cdkAutosizeMaxRows="5"></textarea>
-                    <button (click)="agregarRespuesta(publicacion, comment.id, 'NombreUsuario', nuevaRespuestaComentario[comment.id], false); limpiarRespuesta(comment.id, false)">
-                        <img src="./assets/enviar-icon.png">
-                    </button>
-                </div>
-            </div>
-        </div>
-        <!-- ... (código de respuestas) ... -->
-        <div id="only-resp" *ngFor="let respuesta of comment.respuestas">
-            <div id="respuesta">
-                <div id="caja-resp">
-                    <div id="cabecera">
-                        <img src="./assets/img-perfil.png">
-                        <div id="cabecera-text">
-                            <span id="Nombre">{{ respuesta.usuario }}</span>
-                            <span id="time">{{ respuesta.fecha }}</span>
-                        </div>
-                    </div>
-    
-                    <p id="com1">{{ respuesta.contenido }}</p>
-                    <a id="responder" (click)="toggleRespuestaRespuesta(respuesta.id)">
-                        Responder...
-                    </a>
-                    
-                    <div id="respuesta-content" *ngIf="respuestasVisiblesRespuesta[respuesta.id]">
-                        <textarea id="respuesta" class="form-control" placeholder="Responder comentario..." [(ngModel)]="nuevaRespuestaRespuesta[respuesta.id]" cdkTextareaAutosize cdkAutosizeMinRows="1" cdkAutosizeMaxRows="5"></textarea>
-                        <button (click)="agregarRespuesta(publicacion, comment.id, 'NombreUsuario', nuevaRespuestaRespuesta[respuesta.id], true); limpiarRespuesta(respuesta.id, true)">
-                            <img src="./assets/enviar-icon.png">
-                        </button>
-                    </div>
-                </div>
-            </div>
-    
-    
+         <textarea id="comentario" class="form-control" placeholder="Comentar publicación..." [(ngModel)]="nuevoComentario" cdkTextareaAutosize cdkAutosizeMinRows="1" cdkAutosizeMaxRows="5"></textarea>
+         <button (click)="agregarComentario('NombreUsuario', nuevoComentario)">
+             <img src="../assets/enviar-icon.png"></button>
+     </div>
+
+  <!-- <div id="PubComentarios" *ngIf="comentariosVisible">
+      <div id="div"></div>
+
+      <div id="Comment1" *ngFor="let comment of publicacion.comentarios">
+      <div id="onlycom">
+          <div id="caja-com">
+              <div id="cabecera">
+                  <img src="./assets/img-perfil.png">
+                  <div id="cabecera-text">
+                  <span id="Nombre">{{ comment.usuario }}</span>
+                  <span id="time">{{ comment.fecha }}</span>
+                  </div>
+              </div>
+              <p id="com1">{{ comment.contenido }}</p>
+              <a id="responder" (click)="toggleRespuestaComentario(comment.id)">
+                  Responder...
+              </a>
+              <div id="respuesta-content" *ngIf="respuestasVisiblesComentario[comment.id]">
+                  <textarea id="respuesta" class="form-control" placeholder="Responder comentario..." [(ngModel)]="nuevaRespuestaComentario[comment.id]" cdkTextareaAutosize cdkAutosizeMinRows="1" cdkAutosizeMaxRows="5"></textarea>
+                  <button (click)="agregarRespuesta(publicacion, comment.id, 'NombreUsuario', nuevaRespuestaComentario[comment.id], false); limpiarRespuesta(comment.id, false)">
+                      <img src="./assets/enviar-icon.png">
+                  </button>
+              </div>
+          </div>
+      </div>
+      <div id="only-resp" *ngFor="let respuesta of comment.respuestas">
+          <div id="respuesta">
+              <div id="caja-resp">
+                  <div id="cabecera">
+                      <img src="./assets/img-perfil.png">
+                      <div id="cabecera-text">
+                          <span id="Nombre">{{ respuesta.usuario }}</span>
+                          <span id="time">{{ respuesta.fecha }}</span>
+                      </div>
+                  </div>
+
+                  <p id="com1">{{ respuesta.contenido }}</p>
+                  <a id="responder" (click)="toggleRespuestaRespuesta(respuesta.id)">
+                      Responder...
+                  </a>
+
+                  <div id="respuesta-content" *ngIf="respuestasVisiblesRespuesta[respuesta.id]">
+                      <textarea id="respuesta" class="form-control" placeholder="Responder comentario..." [(ngModel)]="nuevaRespuestaRespuesta[respuesta.id]" cdkTextareaAutosize cdkAutosizeMinRows="1" cdkAutosizeMaxRows="5"></textarea>
+                      <button (click)="agregarRespuesta(publicacion, comment.id, 'NombreUsuario', nuevaRespuestaRespuesta[respuesta.id], true); limpiarRespuesta(respuesta.id, true)">
+                          <img src="./assets/enviar-icon.png">
+                      </button>
+                  </div>
+              </div>
+          </div>
+      </div>
+</div>
+</div>-->
+</div>        <!-- ... (código de respuestas) ... -->
 </div>

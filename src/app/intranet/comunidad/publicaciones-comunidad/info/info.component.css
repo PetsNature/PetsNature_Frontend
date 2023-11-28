@@ -41,7 +41,7 @@
 #comentario-content{
     display: flex;
     margin-bottom: 20px;
-    
+
 }
 
 
@@ -183,4 +183,8 @@ textarea{
     max-width: 1072.65px;
     max-height: 500px;
     border-radius: 8px;
+}
+
+.container{
+    margin-bottom: 10px;
 }

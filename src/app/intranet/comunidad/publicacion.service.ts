@@ -1,23 +1,24 @@
-import { Injectable } from '@angular/core';
+import {inject, Injectable} from '@angular/core';
+import {PublicacionesApiService} from "../../../@api/publicaciones-api.service";
 
 @Injectable({
   providedIn: 'root'
 })
 export class PublicacionService {
   private publicacionActual: any;
-
+  private api=inject(PublicacionesApiService)
   constructor() { }
 
   getPublicaciones() {
     let publicacionesStorage = localStorage.getItem('publicaciones');
-  
+
     if (publicacionesStorage) {
       return JSON.parse(publicacionesStorage);
     }
-  
+
     return [];
   }
-  
+
 
   getPublicacionActual() {
     // Intenta obtener la publicación del localStorage
@@ -39,26 +40,29 @@ export class PublicacionService {
   updatePublicacion(publicacionActualizada: any) {
     // Obtenemos todas las publicaciones del localStorage
     let publicaciones = this.getPublicaciones();
-  
+
     // Buscamos la publicación que queremos actualizar
     for (let i = 0; i < publicaciones.length; i++) {
       if (publicaciones[i].id === publicacionActualizada.id) {
         // Actualizamos la publicación
         publicaciones[i] = publicacionActualizada;
-  
+
         // Guardamos las publicaciones actualizadas en el localStorage
         localStorage.setItem('publicaciones', JSON.stringify(publicaciones));
-  
+
         return;
       }
     }
-  
+
     // Si no encontramos la publicación, la agregamos al array de publicaciones
     publicaciones.push(publicacionActualizada);
-  
+
     // Guardamos las publicaciones actualizadas en el localStorage
     localStorage.setItem('publicaciones', JSON.stringify(publicaciones));
   }
-  
+
+  async getPublicaciones2(categoria: string) {
+    return this.api.filtrarPublicacion(categoria)
+  }
 }
 

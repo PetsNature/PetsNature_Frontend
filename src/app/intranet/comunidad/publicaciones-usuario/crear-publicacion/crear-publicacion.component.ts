@@ -48,8 +48,9 @@ export class CrearPublicacionComponent implements OnInit {
     tipoMascota: this.tipoMascota2,
     razaAnimal: this.raza2,
     contenido: '',
-    categoria: 'informacion',
+    categoria: this.categoria,
     enlace: '',
+    img: '',
   }
 
   apiPublicacion=inject(PublicacionesApiService)
@@ -62,7 +63,7 @@ export class CrearPublicacionComponent implements OnInit {
 
 
   razasPorTipo: { [key: string]: string[] } = {
-    "Perros": ["Labrador Retriever", "Shih Tzu","Bulldog Francés", "Pastor Alemán", "Golden Retriever", "Poodle", "Dachshund"],
+    "Perros": ["Labrador Retriever", "Shih Tzu","Bulldog Francés", "Pastor Alemán", "Golden Retriever", "Poodle", "Dachshund","Perro peruano"],
     "Gatos": ["Siamés", "Maine Coon", "Persa", "Bengal", "British Shorthair", "Ragdoll"],
     "Aves": ["Canario", "Periquito", "Loro Gris Africano", "Cacatúa", "Agapornis", "Papagayo"],
     "Roedores": ["Hamster Dorado", "Conejo Holandés", "Rata Dumbo", "Jerbo de Mongolia", "Cobaya de Pelo Largo", "Chinchilla"],
@@ -78,6 +79,8 @@ export class CrearPublicacionComponent implements OnInit {
 
   setCategoria(nuevaCategoria: string): void {
     this.categoria = nuevaCategoria;
+    this.publicacion2.categoria=this.categoria
+    console.log(this.publicacion2.categoria)
   }
 
   setCategoria2(nuevaCategoria: string): void {
@@ -97,6 +100,20 @@ export class CrearPublicacionComponent implements OnInit {
     this.raza= 'No especificada';
     this.contenido= '';
     this.e_interes= '';
+
+    // Restablecer la imagen de vista previa
+    let previewElement = <HTMLImageElement>document.getElementById('preview');
+    if (previewElement) {
+      previewElement.src = '';
+    }
+  }
+
+  limpiar_pub2(){
+    this.publicacion2.tema.tema='No especificado';
+    this.publicacion2.tipoMascota.nombre= 'No especificado';
+    this.publicacion2.razaAnimal.nombre= 'No especificada';
+    this.publicacion2.contenido= '';
+    this.publicacion2.enlace= '';
 
     // Restablecer la imagen de vista previa
     let previewElement = <HTMLImageElement>document.getElementById('preview');
@@ -157,7 +174,7 @@ export class CrearPublicacionComponent implements OnInit {
     }
   }
 
-  publicar() {
+  /*publicar() {
     if (this.contenido) {
       this.mostrarAdvertenciaContenido = false;
 
@@ -203,7 +220,7 @@ export class CrearPublicacionComponent implements OnInit {
     } else {
       this.mostrarAdvertenciaContenido = true;
     }
-  }
+  }*/
 
   getIdCliente():number | null{
     const user=localStorage.getItem("AUTH_USER")
@@ -215,21 +232,36 @@ export class CrearPublicacionComponent implements OnInit {
     return null
   }
 
-  async publicar2() {
+  publicar2() {
     if (this.publicacion2.contenido) {
       this.mostrarAdvertenciaContenido = false;
       const idCliente = this.getIdCliente()
       if (idCliente !== null) {
-        const formData=new FormData()
-        formData.append('publicacion',JSON.stringify(this.publicacion2))
+        /*const formData=new FormData()
+        formData.append('publicacion',JSON.stringify(this.publicacion2))*/
         if (this.selectedFile.size > 0) {
-          formData.append('imagen',this.selectedFile)// Verifica si se ha seleccionado un archivo
-            await this.apiPublicacion.crearPublicacionSinImg(formData, idCliente)
-            this.limpiar_pub();
+          let reader = new FileReader();
+          reader.onload = (event: any) => {
+            let img=event.target.result;
+            this.publicacion2.img=img;
+            this.publicacion2.tipoMascota.nombre=this.tipoMascota
+            this.publicacion2.razaAnimal.tipoMascota=this.publicacion2.tipoMascota
+            this.publicacion2.razaAnimal.nombre=this.raza
+            /*formData.append('imagen',JSON.stringify(this.publicacion2.img))
+            formData.append('publicacion',JSON.stringify(this.publicacion2))*/
+            this.apiPublicacion.crearPublicacion(this.publicacion2, idCliente)
+            this.limpiar_pub2();
             console.log('Publicación creada:', this.publicacion2);
-        } else {  // Si no se ha seleccionado un archivo, guarda la publicación sin imagen
-          await this.apiPublicacion.crearPublicacionSinImg(formData, idCliente)
-          this.limpiar_pub();
+            console.log('Imagen:', this.publicacion2.img);
+          }
+          reader.readAsDataURL(this.selectedFile);// Verifica si se ha seleccionado un archivo
+        } else {
+          //formData.append('publicacion',JSON.stringify(this.publicacion2))// Si no se ha seleccionado un archivo, guarda la publicación sin imagen
+          this.publicacion2.tipoMascota.nombre=this.tipoMascota
+          this.publicacion2.razaAnimal.tipoMascota=this.publicacion2.tipoMascota
+          this.publicacion2.razaAnimal.nombre=this.raza
+          this.apiPublicacion.crearPublicacion(this.publicacion2, idCliente)
+          this.limpiar_pub2();
           console.log('Publicación creada:', this.publicacion2);
         }
       }
