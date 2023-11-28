@@ -28,7 +28,7 @@ export class UsersApiService {
   httpClient = inject(HttpClient)
 
   async registerUser(user:UsuarioRegistro){
-      return lastValueFrom(this.httpClient.post<Usuario[]>("http://localhost:8080/registro",user,{ headers:{'No-Token': 'true' }}));
+      return lastValueFrom(this.httpClient.post<Usuario[]>("http://3.139.97.114/registro",user,{ headers:{'No-Token': 'true' }}));
   }
 
   async loginUser(user: UsuarioLogin){
