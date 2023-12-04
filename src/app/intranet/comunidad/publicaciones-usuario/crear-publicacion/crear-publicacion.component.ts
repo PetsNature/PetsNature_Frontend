@@ -49,7 +49,7 @@ export class CrearPublicacionComponent implements OnInit {
     tipoMascota: this.tipoMascota2,
     razaAnimal: this.raza2,
     contenido: '',
-    categoria: this.categoria,
+    categoria: '',
     enlace: '',
     img: '',
   }
@@ -61,7 +61,7 @@ export class CrearPublicacionComponent implements OnInit {
   ngOnInit() {
     this.publicacionActual = this.publicacionService.getPublicacionActual();
     this.categoriaService.categoria$.subscribe(categoria => {
-      this.categoria = categoria;
+      this.publicacion2.categoria = categoria;
     });
   }
   
