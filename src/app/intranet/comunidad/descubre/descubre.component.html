@@ -5,24 +5,10 @@
 
     <div class="descubre" id="Descubre">
         <div>
-            <div class="cuenta" id="Cuenta">
-                <img class="img-perfil" src="https://i.ibb.co/GpPLFRS/img-perfil.png"> 
-                <br>
-                <button type="button" routerLink="/intranet/descubre/crear" [ngStyle]="{'color': isCrearPublicacionesRoute ? 'white' : '', 'background-color': isCrearPublicacionesRoute ? '#F99A5B' : ''}">
-                    <img src="../assets/crearpub-icon.png">
-                    CREAR PUBLICACIÓN
-                </button>
-            
-                <button type="button" routerLink="/intranet/descubre/mis_publicaciones" [ngStyle]="{'color': isMisPublicacionesRoute ? 'white' : '', 'background-color': isMisPublicacionesRoute ? '#F99A5B' : ''}">
-                    <img src="../assets/verpub-icon.png">
-                    MIS PUBLICACIONES
-                </button>
-            </div>
-
 
             <div id="Filtros" *ngIf="esRutaDescubre()">
-                <div id="header">
-                    <p id="title">FILTRAR POR</p><img src="../assets/filtro-icon.png">
+                <div id="header" style="margin-bottom: 20px;">
+                    <p  id="title">FILTRAR POR</p><img src="../assets/filtro-icon.png">
                 </div>
                 
                 <div id="typefiltro">
@@ -54,9 +40,7 @@
                         <option *ngFor="let r of razas" [value]="r">{{ r }}</option>
                     </select>
                 </div>
-            </div>
-            
-              
+            </div>        
 
         </div>
             

@@ -38,11 +38,20 @@
     <button mat-menu-item style="color: #ff6600; display: flex; justify-content: center; align-items: center;" *ngIf="authenticationService.isAuthenticated()" routerLink="/intranet/perfil">
         Ver perfil
     </button>
-    
-    <button mat-menu-item style="color: #ff6600;" *ngIf="authenticationService.isAuthenticated()" (click)="logout()" >
-        Cerrar sesion
+
+    <button mat-menu-item style="color: #ff6600; display: flex; justify-content: center; align-items: center;" *ngIf="authenticationService.isAuthenticated()" routerLink="/intranet/descubre/mis_publicaciones">
+        Mis publicaciones
     </button>
-    <button mat-menu-item  *ngIf="!authenticationService.isAuthenticated()">Iniciar sesion</button>
+
+    <button mat-menu-item style="color: #ff6600; display: flex; justify-content: center; align-items: center;" *ngIf="authenticationService.isAuthenticated()" (click)="logout()" >
+        Cerrar sesión
+    </button>
+
+    <button mat-menu-item  *ngIf="!authenticationService.isAuthenticated()">
+        Iniciar sesion
+    </button>
+
+
    </mat-menu>
 
     

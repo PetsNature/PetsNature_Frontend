@@ -11,7 +11,6 @@ const routes: Routes = [
   
     { path: '', component: DescubreComponent, children: [
       {path: '', component: GestionPublicacionesComponent },
-      {path: 'crear', component: CrearPublicacionComponent },
       {path: 'mis_publicaciones', component: MisPublicacionesComponent },
     ],
   },

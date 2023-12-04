@@ -1,3 +1,16 @@
+<div id="mensaje">
+    <div style="margin-bottom: 10px;">
+        <span>¡Comparte tus recomendaciones con la comunidad! ¿Tienes un consejo especial que ha funcionado para tu mascota? 
+            Tu experiencia puede ayudar a otros dueños de mascotas. Publica una recomendación ahora y contribuye a crear una 
+            red de apoyo para el bienestar de nuestras adoradas mascotas. Juntos, hacemos la diferencia. 🐶🐱💡</span>
+    </div>
+    <div style="text-align: right;">
+        <button class="button" (click)="this.crear_pub_visible = !this.crear_pub_visible"><img style="height: 20px;" src="../assets/lapiz.png"></button>
+    </div>
+</div>
+
+<app-crear-publicacion *ngIf="this.crear_pub_visible"></app-crear-publicacion>
+
 <div id="Publicaciones" *ngFor="let publicacion of publicaciones">
     <div class="container" id="PubInfo">
 

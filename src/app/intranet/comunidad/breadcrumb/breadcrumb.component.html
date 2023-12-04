@@ -1,11 +1,11 @@
-<nav class="Breadcrumb" style="padding: 10px 20px; list-style: none; margin-top: 5px; margin-left: 16px; margin-bottom: 16px;">
+<nav class="Breadcrumb" style="padding: 10px 20px; list-style: none; margin-top: 30px; margin-left: 50px; margin-bottom: 16px;">
   <ng-container *ngFor="let breadcrumb of breadcrumbs; let last = last">
     <ng-container *ngIf="!last">
-      <a [routerLink]="breadcrumb.route" style="color: #FF9A5B; text-decoration: underline; font-size: 14px; font-weight: 600;">{{ breadcrumb.label }}</a>
-      <span style="padding: 2px; color: black;"> / </span>
+      <a [routerLink]="breadcrumb.route" style="color: #FF9A5B; text-decoration: underline; font-size: 14px; font-weight: 700;">{{ breadcrumb.label }}</a>
+      <span style="font-size: 14px; font-weight: 700;"> / </span>
     </ng-container>
     <ng-container *ngIf="last">
-      <span style="font-size: 14px; font-weight: 600;">{{ breadcrumb.label }}</span>
+      <span style="font-size: 14px; font-weight: 700;">{{ breadcrumb.label }}</span>
     </ng-container>
   </ng-container>
 </nav>

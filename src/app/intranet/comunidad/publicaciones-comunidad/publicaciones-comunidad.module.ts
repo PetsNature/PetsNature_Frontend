@@ -6,6 +6,7 @@ import { InfoComponent } from './info/info.component';
 import { PreguntasComponent } from './preguntas/preguntas.component';
 import { RecomendacionesComponent } from './recomendaciones/recomendaciones.component';
 import { FormsModule } from '@angular/forms';
+import { PublicacionesUsuarioModule } from '../publicaciones-usuario/publicaciones-usuario.module';
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import { FormsModule } from '@angular/forms';
     TextFieldModule,
     CommonModule,
     FormsModule,
+    PublicacionesUsuarioModule
   ]
 })
 export class PublicacionesComunidadModule { }

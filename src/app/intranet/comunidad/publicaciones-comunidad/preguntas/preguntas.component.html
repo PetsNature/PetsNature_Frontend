@@ -1,3 +1,16 @@
+<div id="mensaje">
+    <div style="margin-bottom: 10px; padding-right: 5px;">
+        <span>¡Tienes preguntas sobre tus mascotas? Aquí es el lugar perfecto para encontrar respuestas. Realiza tus preguntas
+            y permite que nuestra comunidad comparta su conocimiento contigo. Juntos, construimos un espacio donde las
+             inquietudes encuentran soluciones. ¡No te quedes con dudas, pregúntanos ahora! 🤔🐾</span>
+    </div>
+    <div style="text-align: right;">
+        <button class="button" (click)="this.crear_pub_visible = !this.crear_pub_visible"><img style="height: 20px;" src="../assets/lapiz.png"></button>
+    </div>
+</div>
+
+<app-crear-publicacion *ngIf="this.crear_pub_visible"></app-crear-publicacion>
+
 <div id="Publicaciones" *ngFor="let publicacion of publicaciones">
     <div class="container" id="PubInfo">
 
@@ -101,4 +114,3 @@
       </div>-->
     </div>        <!-- ... (código de respuestas) ... -->
 </div>
-

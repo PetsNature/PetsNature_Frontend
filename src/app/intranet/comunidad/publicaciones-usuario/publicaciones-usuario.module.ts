@@ -15,6 +15,9 @@ import { TextFieldModule } from '@angular/cdk/text-field';
     CommonModule,
     FormsModule,
     TextFieldModule
+  ],
+  exports: [
+    CrearPublicacionComponent,
   ]
 })
 export class PublicacionesUsuarioModule { }

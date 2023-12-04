@@ -1,16 +1,17 @@
+<div style="margin-right: 280px; margin-left: 50px;">
 <div id="FiltroTipoBtn">
-    <button type="button" (click)="c=1" [style.background-color]="c === 1 ? '#FF9A5B' : 'white'" [style.color]="c === 1 ? 'white' : 'black'">
+    <button type="button" (click)="setCategoria('informacion')" [style.background-color]="getButtonStyles('informacion').backgroundColor" [style.color]="getButtonStyles('informacion').color">
         Información
     </button>
-    <button type="button" (click)="c=2" [style.background-color]="c === 2 ? '#FF9A5B' : 'white'" [style.color]="c === 2 ? 'white' : 'black'">
+    <button type="button" (click)="setCategoria('pregunta')" [style.background-color]="getButtonStyles('pregunta').backgroundColor" [style.color]="getButtonStyles('pregunta').color">
         Preguntas
     </button>
-    <button type="button" (click)="c=3" [style.background-color]="c === 3 ? '#FF9A5B' : 'white'" [style.color]="c === 3 ? 'white' : 'black'">
+    <button type="button" (click)="setCategoria('recomendacion')" [style.background-color]="getButtonStyles('recomendacion').backgroundColor" [style.color]="getButtonStyles('recomendacion').color">
         Recomendaciones
     </button>
-    
 </div>
 
-<app-info *ngIf="c==1"></app-info>
-<app-preguntas *ngIf="c==2"></app-preguntas>
-<app-recomendaciones *ngIf="c==3"></app-recomendaciones>
+<app-info *ngIf="categoria=='informacion'"></app-info>
+<app-preguntas *ngIf="categoria=='pregunta'"></app-preguntas>
+<app-recomendaciones *ngIf="categoria=='recomendacion'"></app-recomendaciones>
+</div>

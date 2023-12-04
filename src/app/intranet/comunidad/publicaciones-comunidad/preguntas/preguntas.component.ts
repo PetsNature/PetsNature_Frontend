@@ -10,6 +10,7 @@ import {Comentario} from "../info/info.component";
   styleUrls: ['./preguntas.component.css']
 })
 export class PreguntasComponent {
+  crear_pub_visible = false;
   publicaciones:Publicaciones[]=[];
   comentariosVisible = false;
   respuestasVisiblesComentario: { [key: number]: boolean } = {};

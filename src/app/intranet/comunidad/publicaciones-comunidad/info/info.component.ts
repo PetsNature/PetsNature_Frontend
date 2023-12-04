@@ -17,7 +17,7 @@ export interface Comentario {
   styleUrls: ['./info.component.css']
 })
 export class InfoComponent {
-
+  crear_pub_visible = false;
   publicaciones:Publicaciones[]=[];
   comentariosVisible = false;
   respuestasVisiblesComentario: { [key: number]: boolean } = {};

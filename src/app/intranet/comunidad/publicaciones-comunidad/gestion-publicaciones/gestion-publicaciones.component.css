@@ -4,9 +4,9 @@
     background-color: #FFD9B9;
     padding: 20px;
     margin-bottom: 20px;
-    border-radius: 15px;
-
+    border-radius: 20px;
     margin-right: 30px;
+    margin-bottom: 40px;
 } 
 
 #FiltroTipoBtn button{
@@ -14,7 +14,7 @@
     color: white;
     font-weight: 600;
     margin: 5px;
-    border-radius: 10px;
+    border-radius: 20px;
     background-color: #F99A5B;
     border: none;
     padding: 10px 0px;

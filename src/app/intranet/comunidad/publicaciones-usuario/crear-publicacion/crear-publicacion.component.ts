@@ -1,4 +1,5 @@
 import {Component, inject, OnInit} from '@angular/core';
+import { CategoriaService } from '../../categoria.service';
 import { PublicacionService } from '../../publicacion.service';
 import {
   CrearPublicacion,
@@ -19,7 +20,7 @@ import {ERROR} from "@angular/compiler-cli/src/ngtsc/logging/src/console_logger"
 
 export class CrearPublicacionComponent implements OnInit {
 
-  categoria: string = 'informacion'; //por defecto es informacion
+  categoria: string = ''; 
   tema: string= 'No especificado';
   tipoMascota: string = 'No especificado';
   raza: string = 'No especificada';
@@ -55,13 +56,16 @@ export class CrearPublicacionComponent implements OnInit {
 
   apiPublicacion=inject(PublicacionesApiService)
 
-  constructor(private publicacionService: PublicacionService) { }
+  constructor(private publicacionService: PublicacionService, private categoriaService: CategoriaService) { }
 
   ngOnInit() {
     this.publicacionActual = this.publicacionService.getPublicacionActual();
+    this.categoriaService.categoria$.subscribe(categoria => {
+      this.categoria = categoria;
+    });
   }
-
-
+  
+  
   razasPorTipo: { [key: string]: string[] } = {
     "Perros": ["Labrador Retriever", "Shih Tzu","Bulldog Francés", "Pastor Alemán", "Golden Retriever", "Poodle", "Dachshund","Perro peruano"],
     "Gatos": ["Siamés", "Maine Coon", "Persa", "Bengal", "British Shorthair", "Ragdoll"],
