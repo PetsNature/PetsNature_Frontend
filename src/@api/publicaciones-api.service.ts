@@ -91,10 +91,10 @@ export class PublicacionesApiService {
 
 
   async crearPublicacion(crearPublicacion1: CrearPublicacion, id: number) {
-    return lastValueFrom(this.httpClient.post<SavePublicacionResponse>(`http://localhost:8080/descubre/${id}/crear_publicacion`,crearPublicacion1,{ headers:{'No-Token': 'true'}}));
+    return lastValueFrom(this.httpClient.post<SavePublicacionResponse>(`http://3.146.35.150/descubre/${id}/crear_publicacion`,crearPublicacion1,{ headers:{'No-Token': 'true'}}));
   }
 
  async filtrarPublicacion(categoria: string) {
-    return lastValueFrom(this.httpClient.get<Publicaciones[]>(`http://localhost:8080/descubre/${categoria}/no especificado/no especificada/no seleccionado`, {headers:{'No-Token': 'true'}}));
+    return lastValueFrom(this.httpClient.get<Publicaciones[]>(`http://3.146.35.150/descubre/${categoria}/no especificado/no especificada/no seleccionado`, {headers:{'No-Token': 'true'}}));
   }
 }

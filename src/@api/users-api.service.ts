@@ -28,10 +28,10 @@ export class UsersApiService {
   httpClient = inject(HttpClient)
 
   async registerUser(user:UsuarioRegistro){
-      return lastValueFrom(this.httpClient.post<Usuario[]>("http://localhost:8080/registro",user,{ headers:{'No-Token': 'true' }}));
+      return lastValueFrom(this.httpClient.post<Usuario[]>("http://3.146.35.150/registro",user,{ headers:{'No-Token': 'true' }}));
   }
 
   async loginUser(user: UsuarioLogin){
-    return lastValueFrom(this.httpClient.post<Usuario>("http://localhost:8080/login2", user,{ headers:{'No-Token': 'true' }}));
+    return lastValueFrom(this.httpClient.post<Usuario>("http://3.146.35.150/login2", user,{ headers:{'No-Token': 'true' }}));
   }
 }
