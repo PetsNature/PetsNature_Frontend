@@ -6,37 +6,37 @@
 </nav>
 
     <div id="Info-Cuenta">
-        
+
         <h2 style="font-size: 30px;">Datos Personales</h2>
         <div id="div"></div>
 
         <div id="caja">
             <div id="Foto-Perfil" style="position: relative; text-align: center;">
                 <img [src]="imagenPerfil" alt="Perfil" style="border-radius: 100%; width: 300px; height: 300px; object-fit: cover;">
-            
+
                 <label id="Subirimg" for="fileInput">
                     Subir Foto
                 </label>
-            
+
                 <input type="file" id="fileInput" (change)="onFileSelected($event)" style="display: none;">
             </div>
 
-            
+
 
             <div id="caja-datos">
                 <div id="background-datos">
                     <div id="datos">
                         <label>Nombre y Apellidos</label>
                         <div>
-                            <input type="text" placeholder="Ernesto Castro">
+                            <input type="text" placeholder="{{Name}}">
                             <button><img src="./assets/edit-icon.png"></button>
-                            
+
                         </div>
                     </div>
                     <div id="datos">
                         <label>Correo electrónico</label>
                         <div>
-                            <input type="email" placeholder="ernesto@123.com">
+                            <input type="email" placeholder="{{Correo}}">
                             <button><img src="./assets/edit-icon.png"></button>
                         </div>
                     </div>

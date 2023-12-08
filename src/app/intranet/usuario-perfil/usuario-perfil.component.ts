@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import {Component, inject} from '@angular/core';
+import {AuthenticationService} from "../../authentication/authentication.service";
+import {UsersApiService} from "../../../@api/users-api.service";
 
 @Component({
   selector: 'app-usuario-perfil',
@@ -8,6 +10,9 @@ import { Component } from '@angular/core';
 export class UsuarioPerfilComponent {
 
   imagenPerfil = './assets/img-perfil.png'; // Ruta de la imagen predeterminada
+
+  readonly authenticationService = inject(AuthenticationService)
+  readonly usersApiService = inject(UsersApiService)
 
   onFileSelected(event: any) {
     const file: File = event.target.files[0];
@@ -20,6 +25,14 @@ export class UsuarioPerfilComponent {
 
       reader.readAsDataURL(file);
     }
+  }
+
+  get Name() {
+    return this.authenticationService.authenticatedUser.value?.nombre ?? 'Invitado'
+  }
+
+  get Correo() {
+    return this.authenticationService.usuario1.correo
   }
 
   subirFoto() {
