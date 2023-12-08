@@ -32,6 +32,9 @@ export class UsersApiService {
   }
 
   async loginUser(user: UsuarioLogin){
-    return lastValueFrom(this.httpClient.post<Usuario>("http://18.119.162.163/login2", user,{ headers:{'No-Token': 'true' }}));
+    return lastValueFrom(this.httpClient.post<Usuario>("http://18.119.162.163/login2", user,{ headers:{'No-Token': 'true' }}).pipe(catchError((error) => {
+      console.error('Error en la solicitud:', error);
+      return throwError('Credenciales incorrectas');
+    })));
   }
 }

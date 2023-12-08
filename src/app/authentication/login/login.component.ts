@@ -1,6 +1,8 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { AuthenticationService } from '../authentication.service';
 import {UsuarioLogin} from "../../../@api/users-api.service";
+import {error} from "@angular/compiler-cli/src/transformers/util";
+import {throwError} from "rxjs";
 
 @Component({
   selector: 'app-login',
@@ -30,7 +32,6 @@ export class LoginComponent implements OnInit {
     } else {
       await this.login()
       if (!this.authenticationService.isAuthenticated()) {
-        this.m = 'Usuario y/o contraseña no encontrado'
         this.authentication.correo = ''
         this.authentication.contrasena = ''
       }
@@ -39,7 +40,8 @@ export class LoginComponent implements OnInit {
 
   async login() {
     console.log('try to login')
-    await this.authenticationService.login(this.authentication);
+    await this.authenticationService.login(this.authentication)
+      .catch(error=>this.m = 'Usuario y/o contraseña no encontrado')
   }
 
 }
