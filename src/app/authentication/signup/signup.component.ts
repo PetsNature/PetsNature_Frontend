@@ -58,7 +58,7 @@ export class SignupComponent implements OnInit{
       return;
     } finally {
       if (this.user.correo != '') {
-        alert('Registro exitoso' + this.user.nombre + this.user.correo)
+        alert('Registro exitoso ' + this.user.nombre + this.user.correo)
         this.userLogin.correo = this.user.correo
         this.userLogin.contrasena = this.user.contrasena
         this.authenticationService.login(this.userLogin)
