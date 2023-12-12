@@ -28,11 +28,11 @@ export class UsersApiService {
   httpClient = inject(HttpClient)
 
   async registerUser(user:UsuarioRegistro){
-      return lastValueFrom(this.httpClient.post<Usuario[]>("http://18.119.162.163/registro",user,{ headers:{'No-Token': 'true' }}));
+      return lastValueFrom(this.httpClient.post<Usuario[]>("http://3.144.118.27/registro",user,{ headers:{'No-Token': 'true' }}));
   }
 
   async loginUser(user: UsuarioLogin){
-    return lastValueFrom(this.httpClient.post<Usuario>("http://18.119.162.163/login2", user,{ headers:{'No-Token': 'true' }}).pipe(catchError((error) => {
+    return lastValueFrom(this.httpClient.post<Usuario>("http://3.144.118.27/login2", user,{ headers:{'No-Token': 'true' }}).pipe(catchError((error) => {
       console.error('Error en la solicitud:', error);
       return throwError('Credenciales incorrectas');
     })));
